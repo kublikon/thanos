@@ -1,0 +1,52 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs"></div>
+</div>
+<!-- END search -->
+
+<!-- settings -->
+<div class="t-settings-main">
+	<div class="t-setting-splash clearfix">
+		<div class="t-splash">
+			<img class="t-upload-img fx-fs" id="splash" ng-src="{{splash.data}}" ng-click="selectImage('file-1')">
+			<input type="file" id="file-1" readfile="splash" accept="image/jpg">
+		</div>
+	</div>
+
+	<ul class="t-settings clearfix">
+		<li>
+			<p>Profile</p>
+			<div class="t-setting">
+				<input type="text" placeholder="first name" id="first-name" ng-model="profile.first_name">
+				<input type="text" placeholder="last name" id="last-name" ng-model="profile.last_name">
+				<select ng-model="user.gender">
+					<option value="" selected="selected">- gender -</option>
+					<option>male</option>
+					<option>female</option>
+				</select>
+			</div>
+		</li>
+		<li>
+			<p>Account</p>
+			<div class="t-setting">
+				<select ng-model="profile.auth.is_active">
+					<option value="" selected="selected">- account status -</option>
+					<option value="true">active</option>
+					<option value="false">deactivated</option>
+				</select>
+				<select ng-model="profile.account_type">
+					<option value="" selected="selected">- account type -</option>
+					<option value="true">admin</option>
+					<option value="false">developer</option>
+					<option value="false">support</option>
+				</select>
+				<button class="btn save" id="save" ng-click="save(profile, splash)">update</button>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- END settings -->

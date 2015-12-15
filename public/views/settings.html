@@ -1,0 +1,39 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs"></div>
+</div>
+<!-- END search -->
+
+<!-- settings -->
+<div class="t-settings-main">
+	<div class="t-setting-splash clearfix">
+		<div class="t-splash">
+			<img class="t-upload-img fx-fs" id="profile" ng-src="{{profile.data}}" ng-click="selectImage('file-1')">
+			<input type="file" id="file-1" readfile="profile" accept="image/jpg">
+		</div>
+	</div>
+
+	<ul class="t-settings clearfix">
+		<li>
+			<p>Company</p>
+			<div class="t-setting">
+				<input type="text" placeholder="company name" id="company-name" ng-model="settings.company_name">
+				<input type="text" placeholder="support email" id="support-email" ng-model="settings.support_email">
+			</div>
+		</li>
+		<li>
+			<p>Config</p>
+			<div class="t-setting">
+				<input type="text" placeholder="aws account id" ng-model="settings.aws_account_id">
+				<input type="text" placeholder="aws access key id" ng-model="settings.aws_access_key_id">
+				<input type="text" placeholder="aws region" ng-model="settings.aws_region">
+				<button class="btn save" id="save" ng-click="save(settings, profile)">update</button>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- END settings -->

@@ -1,0 +1,35 @@
+/* thanos CSS login */
+
+/* login */
+.t-login-con { width:100%; height:0; position:relative; background:#eee; overflow:hidden; z-index:10000; }
+.t-login-con.on { height:100%; }
+
+.t-login-con img { width:100%; }
+
+/* box */
+.t-box { width:300px; margin-bottom:4px; padding:20px; border-radius:3px; box-shadow:0 1px 2px rgba(0, 0, 0, 0.10); background:rgba(255,255,255,.8); z-index:110; }
+.t-box p { color:#acb9c5; }
+.t-box p.error { margin-top:0; text-align:center; color:#e15967; }
+.t-box p.error:empty { display:none; }
+
+.t-box input[type=text], .t-box input[type=password], .t-box input[type=email] { width:100%; margin-bottom:4px; padding:10px; font-size:14px; border:none; border-radius:3px; box-sizing:border-box; background:#fff; color:@accent; outline:none; }
+
+input[type=text].t-first, input[type=text].t-last { width:128px; }
+input[type=text].t-month, input[type=text].t-day { width:45px; }
+input[type=text].t-year { width:50px; }
+
+.t-box .btn { padding:8px 14px; color:@accent; }
+.t-box .btn-l { color:#acb9c5; }
+.t-box:hover .btn-l, .t-box:hover a { text-shadow:0 1px 0 rgba(255, 255, 255, 0.8); color:@accent; }
+.t-box:hover p { color:#999; }
+.t-box:hover p.error { color:#e15967; }
+.t-box:hover p a { cursor:pointer; }
+
+/* login */
+.t-login { margin:-142px 0 0 -170px; display:none; position:absolute; left:50%; top:50%; }
+
+/* sign up */
+.t-sign-up { margin:-161px 0 0 -170px; display:none; position:absolute; left:50%; top:50%; }
+
+/* forgot */
+.t-forgot { margin:-81px 0 0 -170px; display:none; position:absolute; left:50%; top:50%; }

@@ -1,0 +1,89 @@
+@font-face {
+	font-family: 'kublikon';
+	src:url('../fonts/kublikon.eot?94iiu6');
+	src:url('../fonts/kublikon.eot?#iefix94iiu6') format('embedded-opentype'),
+		url('../fonts/kublikon.woff?94iiu6') format('woff'),
+		url('../fonts/kublikon.ttf?94iiu6') format('truetype'),
+		url('../fonts/kublikon.svg?94iiu6#kublikon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="ka-"], [class*=" ka-"] {
+	font-family: 'kublikon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ka-full-logo:before {
+	content: "\e605";
+}
+.ka-logo:before {
+	content: "\e607";
+}
+.ka-code:before {
+	content: "\e614";
+}
+.ka-refresh:before {
+	content: "\e611";
+}
+.ka-min-size:before {
+	content: "\e612";
+}
+.ka-max-size:before {
+	content: "\e613";
+}
+.ka-left:before {
+	content: "\e60f";
+}
+.ka-right:before {
+	content: "\e610";
+}
+.ka-web:before {
+	content: "\e60e";
+}
+.ka-place:before {
+	content: "\e600";
+}
+.ka-close:before {
+	content: "\e601";
+}
+.ka-down:before {
+	content: "\e602";
+}
+.ka-dropdown:before {
+	content: "\e603";
+}
+.ka-filter:before {
+	content: "\e604";
+}
+.ka-heart:before {
+	content: "\e606";
+}
+.ka-plus:before {
+	content: "\e608";
+}
+.ka-posts:before {
+	content: "\e609";
+}
+.ka-products:before {
+	content: "\e60a";
+}
+.ka-tag:before {
+	content: "\e60b";
+}
+.ka-up:before {
+	content: "\e60c";
+}
+.ka-viewed:before {
+	content: "\e60d";
+}
+

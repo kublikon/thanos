@@ -1,0 +1,34 @@
+/* thanos CSS menu */
+
+/* menu */
+.t-menu { max-width:100%; min-height:200px; padding:0 20px; position:fixed; top:0; left:0; right:0; box-sizing:border-box; background:#1f2532; z-index:1000; }
+.t-menu .t-menu-con { max-width:@width; margin:0 auto; position:relative; }
+
+.t-menu .t-menu-con ul { margin-top:15px; list-style:none; }
+.t-menu .t-menu-con ul li { margin-right:26px; display:inline-block; position:relative; vertical-align:middle; }
+.t-menu .t-menu-con ul li a { padding:5px; text-transform:capitalize; font-size:12px; color:#fff; opacity:.5; cursor:pointer; -moz-transition:all 0.2s ease-out; -webkit-transition:all 0.2s ease-out; -o-transition:all 0.2s ease-out; }
+.t-menu .t-menu-con ul li a:hover { opacity:1; }
+
+/* company */
+.t-company { position:absolute; left:0; top:75px; }
+.t-company a { width:44px; height:44px; margin-right:20px; float:left; border-radius:4px; background:rgba(255,255,255,.1); overflow:hidden; }
+.t-company a img { width:100%; height:100%; border:none; border-radius:4px; opacity:0; }
+.t-company a img.on { opacity:1; }
+.t-company h1 { margin:0; float:left; color:#fff; font-weight:100; }
+
+.t-menu .t-menu-con > a { width:27px; height:27px; display:none; position:absolute; top:-4px; right:25.5%; border-radius:15px; background:#7c8995; cursor:pointer; }
+.t-menu .t-menu-con > a img { width:100%; height:100%; border-radius:15px; opacity:0; }
+.t-menu .t-menu-con > a img.on { opacity:1; }
+
+// /* device menu */
+.t-device-menu-toggle { width:50px; height:40px; display:none; background:url(../img/icon-device-menu.png) no-repeat; background-size:18px; background-position:12px 50%; }
+.t-device-menu-toggle .b-dd {  }
+
+.t-device-menu { display:none; }
+.t-device-menu .t-device-search { padding:10px; }
+.t-device-menu .t-device-search input { width:100%; padding:8px 8px 8px 24px; border:none; border-radius:3px; box-sizing:border-box; background:#fff url(../img/icon-search-dark.png) no-repeat; background-size:14px; background-position:6px; color:@accent; }
+.t-device-menu .t-device-search input.list { background:#fff url(../img/icon-search-dark-filter.png) no-repeat; background-size:14px; background-position:6px; }
+.t-device-menu .t-device-search input.tag { background:#fff url(../img/icon-search-dark-tag.png) no-repeat; background-size:14px; background-position:6px; }
+.t-device-menu ul { text-align:left; }
+.t-device-menu ul li { padding:10px 15px; margin-right:0; display:block; font-size:12px; border-top:1px solid rgba(255,255,255,.1); color:rgba(240,240,240,.8); cursor:pointer; }
+.t-device-menu ul li.main { font-size:14px; font-weight:bold; color:#fff; }

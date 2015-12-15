@@ -1,0 +1,48 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs">
+		<ul class="t-tabs">
+			<li><a>Current Users <span>10</span></a></li>
+			<li><a>User Requests</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END search -->
+
+<div class="t-items-main">
+	<ul class="t-items clearfix">
+		<li ng-show="0 != posts.length" ng-repeat="post in posts | filter:search_input">
+			<div class="b-item">
+				<a ng-click="openPost(post._id)">
+					<div class="b-expand">
+						<div class="b-images">
+							<img ng-src="{{post.splashes[0].m}}" imageload>
+						</div>
+					</div>
+					<span></span>
+				</a>
+				<div class="b-social">
+					<span class="b-l" ng-click="like(post)"><i class="ka-heart ka-ls"></i>{{post.likes.length}}</span>
+					<span><i class="ka-viewed ka-ls"></i>{{post.views}}</span>
+					<a ng-click="openUser(post.user.username_public)">
+						<img ng-src="{{post.user.profile_s}}">
+					</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="t-loading" id="loading">
+		<span></span>
+	</div>
+
+	<div class="t-no-records" id="no-records">
+		<p>nothing here</p>
+	</div>
+
+	<div class="t-pagination" ng-click="getMorePosts()"><a class="fx-fs"><i class="ka-down"></i></a></div>
+</div>

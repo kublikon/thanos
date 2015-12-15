@@ -1,0 +1,21 @@
+{
+	"mode": "dev",
+	"port_dev": 3000,
+	"port_prod": 8080,
+	"mongo_path_dev": "mongodb://localhost/thanos",
+	"mongo_path_prod": "mongodb://localhost/thanos",
+	"salt": "",
+	"title": "Thanos",
+
+	"aws_account_id": "",
+	"aws_access_key_id": "",
+	"aws_secret_access_key": "",
+	"aws_bucket": "",
+	"aws_region": "",
+	"aws_logging": false,
+	"aws_s3_domain" : "",
+
+	"default_profile_s": "",
+	"default_profile_m": "",
+	"default_profile_l": ""
+}

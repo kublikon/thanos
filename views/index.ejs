@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="thanos">
+<head>
+    <title><%= title %></title>
+
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    
+    <% for(var i=0; i<css.length; i++) {%>
+   		<link rel="stylesheet" href="<%= css[i] %>" />
+	<% } %>
+   
+</head>
+
+<body ng-controller="menuCtrl">
+
+	<!-- main content -->
+	<div class="t-main fx-fs">
+
+		<!-- menu -->
+		<div class="t-menu">
+			<div class="t-menu-con">
+				<ul>
+					<li><a ng-click="to('')">stats</a></li>
+					<li><a ng-click="to('users')">users</a></li>
+					<li><a ng-click="to('deployments')">deployments</a></li>
+					<li><a ng-click="to('settings')">settings</a></li>
+					<li><a ng-click="showLogin()" id="sign-in-btn">sign in</a></li>
+					<li id="device-log-out-btn"><a ng-click="logout()">Log out</a></li>
+				</ul>
+				<a id="user-profile" ng-click="to(user.username_public)">
+					<img class="fx-fs" ng-src="{{user.profile_s}}" imageload>
+				</a>
+				<div class="t-main-search">
+					<input type="text" id="main-search" placeholder="search" ng-model="search_text" ng-keyup="search(search_text, $event)">
+				</div>
+				<div class="t-company">
+					<a><img class="fx-fs" src="{{user.profile_s}}" imageload></a>
+					<h1>ustyme</h1>
+				</div>
+			</div>
+
+			<div class="t-device-menu-toggle" ng-click="showDeviceMenu()">
+				<div class="b-dd"></div>
+			</div>
+			<div class="t-device-menu">
+				<div class="t-device-search">
+					<input type="text" id="device-search" placeholder="search" ng-model="search_text" ng-keyup="search(search_text, $event)">
+				</div>
+				<ul>
+					<li class="main" ng-click="to('')" id="device-stats-btn">Stats</li>
+					<li ng-click="to('users')" id="device-users-btn">Users</li>
+					<li ng-click="to('deployments')" id="device-deployments-btn">Deployments</li>
+					<li ng-click="to('settings')" id="device-settings-btn">Settings</li>
+					<li class="main" ng-click="showLogin()" id="device-sign-in-btn">Sign In</li>
+					<li ng-click="logout()" id="device-log-out-btn">Log out</li>
+				</ul>
+			</div>
+		</div>
+		<!-- END menu -->
+
+		<!-- login -->
+		<div class="t-login-con fx-fs" ng-controller="loginCtrl">
+			<img src="./img/login-splash2.jpg">
+
+			<!-- login -->
+			<div class="t-login" id="login-modal">
+				<div class="t-box fx-lg">
+					<p class="error">{{login.login.error.message}}</p>
+					<input type="email" placeholder="username" ng-model="login.username" ng-keyup="enterLogin($event)" />
+					<input type="password" placeholder="password" ng-model="login.password" ng-keyup="enterLogin($event)" />
+					<button class="btn" ng-click="loginUser()">login</button>
+					<button class="btn btn-l fx-lg" ng-click="forgot()">forgot password?</button>
+				</div>
+
+				<div class="t-box fx-lg" ng-click="noAccount()">
+					<button class="btn btn-l fx-lg">Request an account creation.</button>
+				</div>
+			</div>
+			<!-- END login -->
+
+			<!-- create user -->
+			<div class="t-sign-up" id="create-modal">
+				<div class="t-box fx-lg">
+					<p class="error">{{login.create.error.message}}</p>
+					<input type="text" placeholder="first name" class="t-first" ng-model="login.first_name" />
+					<input type="text" placeholder="last name" class="t-last" ng-model="login.last_name" />
+					<input type="email" placeholder="email" ng-model="login.email" />
+					<input type="password" placeholder="password" ng-model="login.new_password" />
+					<input type="password" placeholder="confirm password" ng-model="login.confirm_password" />
+					<p class="fx-lg">By creating an account, I accept 
+						<a class="fx-lg" ng-click="to('terms')">Terms of Service</a> and 
+						<a class="fx-lg" ng-click="to('privacy')">Privacy Policy</a>.
+					</p>
+					<button class="btn fx-lg" ng-click="createUser()">create</button>
+					<button class="btn btn-l fx-lg" ng-click="signUpNevermind()">Got one, nevermind...</button>
+				</div>
+			</div>
+			<!-- END create user -->
+
+			<!-- forgot password -->
+			<div class="t-forgot">
+				<div class="t-box fx-lg">
+					<input type="email" placeholder="email" ng-model="login.forgot_email" />
+					<button class="btn" ng-click="forgotPassword()">submit</button>
+					<button class="btn btn-l fx-lg" ng-click="forgotNevermind()">Oh, nevermind...</button>
+				</div>
+			</div>
+			<!-- END forgot password -->
+		</div>
+		<!-- END login -->
+
+		<!-- page -->
+		<div class="t-view" id="t-view" ui-view></div>
+		<!-- END page -->
+
+		<!-- footer -->
+		<div class="t-footer">
+			<div class="t-footer-con">
+				<ul>
+					<li><a ng-click="to('terms')">Terms</a></li>
+					<li><a href="https://github.com/kublikon/thanos" target="_blank"><i class="ka-full-logo ka-la"></i></a></li>
+					<li><a ng-click="to('privacy')">Privacy</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- END footer -->
+
+	</div>
+	<!-- END main content -->
+
+	<% for(var i=0; i<libs.length; i++) {%>
+   		<script src="<%= libs[i] %>"></script>
+	<% } %>
+
+	<% for(var i=0; i<scripts.length; i++) {%>
+   		<script src="<%= scripts[i] %>"></script>
+	<% } %>
+
+</body>
+</html>

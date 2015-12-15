@@ -1,0 +1,42 @@
+/* kuba-bootstrap overwrites */
+
+/* clearfix */
+.clearfix:after { height:0; display:block; visibility:hidden; font-size:0; content:" "; clear:both; }
+.clearfix { display:inline-block; }
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+
+.hide { display:none; }
+
+/* main */
+h1 span { margin-left:10px; font-size:11px; }
+h2 { padding-top:20px; font-size:20px; }
+h3 { padding-top:20px; font-size:20px; }
+h4 { padding-top:20px; font-size:15px; }
+
+p { margin:20px 0; }
+
+pre { padding:14px 16px; border:1px solid #e1e1e1; background:#fff; }
+pre span.str { color:@accent; }
+pre span.fun { color:@accent; }
+pre span.kwd { color:#df2b47; }
+code { padding:2px 4px; border-radius:8px; white-space:nowrap; background:#fff; color:@accent; }
+
+.btn { padding:8px 14px; color:@accent; }
+.btn.save { background-image:-webkit-linear-gradient(top, @accent, @accent); text-shadow:0 1px 0 rgba(195,35,97,0.8); color:#fff; }
+.btn:disabled { position:relative; text-shadow:none; color:@accent; }
+.btn:disabled:after { width:22px; height:22px; margin-left:-11px; display:block; position:absolute; left:50%; top:6px; content:''; background-image:url(../img/icon-logo-spin.png); background-size:100%; background-repeat:no-repeat;
+	-webkit-animation:spin 3s linear infinite; -moz-animation:spin 3s linear infinite; animation:spin 3s linear infinite; }
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+textarea { -webkit-appearance:none; box-shadow:none; }
+
+/* selection prevention */
+input:focus, select:focus, textarea:focus, button:focus { outline: none; }
+
+/* select */
+::-moz-selection { background:@accent; color:#fff; }
+::selection { background:@accent; color:#fff; }

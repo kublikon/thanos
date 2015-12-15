@@ -1,0 +1,88 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- new deployment -->
+<div class="t-new-item-main" id="new-deployment">
+	<div class="t-new-item-con">
+		<div class="t-new-item">
+			<input type="text" id="deployment_group" placeholder="deployment_group" ng-model="deployment_group">
+			<input type="text" id="tag-version" placeholder="tag version" ng-model="tag_version">
+			<textarea rows="3" id="description" placeholder="write a description..." ng-model="description"></textarea>
+			<button class="btn save" id="save" ng-click="save()">deploy</button>
+			<button class="btn" ng-click="cancel()">cancel</button>
+		</div>
+	</div>
+</div>
+<!-- END new deployment -->
+
+<!-- edit deployment -->
+<div class="t-edit-item-main" id="edit-deployment">
+	<ul class="t-edit-item-con clearfix">
+		<li>
+			<ul class="t-edit-list">
+				<li><p>Deployment ID: {{edit.deployment_id}}</p></li>
+				<li><p>Deployment Group: {{edit.deployment_group}}</p></li>
+				<li><p>Status: {{edit.}}</p></li>
+				<li><p>Number of Deployments: {{edit.deplayment_count}}</p></li>
+				<li><p>Created: {{ edit.created_at}}</p></li>
+			</ul>
+		</li>
+		<li>
+			<div class="t-edit-item">
+				<input type="text" id="tag-version" placeholder="tag version" ng-model="edit.tag_version">
+				<textarea rows="3" id="description" placeholder="write a description..." ng-model="edit.description"></textarea>
+				<button class="btn save" id="save" ng-click="save()">re-deploy</button>
+				<button class="btn" ng-click="cancel()">cancel</button>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- END edit deployment -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs">
+		<ul class="t-filter fx-fs">
+			<li>
+				<a id="selected-filter">{{filter_sort}}<i class="ka-down ka-ld"></i></a>
+				<ul>
+					<li ng-click="filter('all')" id="filter-liked">All</li>
+					<li ng-click="filter('activated')" id="filter-recent">Activated</li>
+					<li ng-click="filter('deactivated')" id="filter-popular">Deactivated</li>
+				</ul>
+			</li>
+		</ul>
+		<a class="t-new" ng-click="openNewDeployment()"><i class="ka-plus ka-ld"></i>New</a>
+	</div>
+</div>
+<!-- END search -->
+
+<div class="t-lists-main">
+	<ul class="t-lists clearfix">
+		<li ng-show="0 != deployments.length" ng-repeat="deployment in deployments | filter:search_input">
+			<div class="t-list clearfix">
+				<a class="t-icon" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
+				<div class="t-text">
+					<a ng-click="openEditDeployment(deployment)">{{deployment.deployment_group}}</a>
+					<p>{{deployment.branch}}@{{deployment.tag_version}}</p>
+				</div>
+				<div class="t-buttons">
+					<a class="btn" ng-click="showHistory(deployment)">History</a>
+					<a class="btn on" ng-show="{{!deployment.auth.is_active}}" ng-click="activateUser(deployment)">Restart</a>
+					<a class="btn" ng-show="{{deployment.auth.is_active}}" ng-click="deactivateUser(deployment)">Stop</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="t-loading" id="loading">
+		<span></span>
+	</div>
+
+	<div class="t-no-records" id="no-records">
+		<p>nothing here</p>
+	</div>
+
+	<div class="t-pagination" ng-click="getMoreUsers()"><a class="fx-fs"><i class="ka-down"></i></a></div>
+</div>

@@ -1,0 +1,50 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs">
+		<ul class="t-filter fx-fs">
+			<li>
+				<a id="selected-filter">{{filter_sort}}<i class="ka-down ka-ld"></i></a>
+				<ul>
+					<li ng-click="filter('all')" id="filter-liked">All</li>
+					<li ng-click="filter('activated')" id="filter-recent">Activated</li>
+					<li ng-click="filter('deactivated')" id="filter-popular">Deactivated</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- END search -->
+
+<div class="t-lists-main">
+	<ul class="t-lists clearfix">
+		<li ng-show="0 != users.length" ng-repeat="user in users | filter:search_input">
+			<div class="t-list clearfix">
+				<a ng-click="openUser(user.username_public)">
+					<img class="fx-fs" ng-src="{{user.profile_m}}" imageload>
+				</a>
+				<div class="t-text">
+					<a ng-click="openUser(user.username_public)">{{user.full_name}}</a>
+					<p>{{user.email}}</p>
+				</div>
+				<div class="t-buttons">
+					<a class="btn on" ng-show="{{!user.auth.is_active}}" ng-click="activateUser(user)">Activate</a>
+					<a class="btn" ng-show="{{user.auth.is_active}}" ng-click="deactivateUser(user)">Deactivate</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="t-loading" id="loading">
+		<span></span>
+	</div>
+
+	<div class="t-no-records" id="no-records">
+		<p>nothing here</p>
+	</div>
+
+	<div class="t-pagination" ng-click="getMoreUsers()"><a class="fx-fs"><i class="ka-down"></i></a></div>
+</div>
