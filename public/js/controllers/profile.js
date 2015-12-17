@@ -2,7 +2,7 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 
 	var content = { id: $stateParams.username };
 
-	check.user(true, function(){
+	check.user(false, function(){
 		service.get('api/profile', content, function(data){
 			bind(data);
 		});

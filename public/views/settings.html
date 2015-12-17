@@ -12,8 +12,8 @@
 <div class="t-settings-main">
 	<div class="t-setting-splash clearfix">
 		<div class="t-splash">
-			<img class="t-upload-img fx-fs" id="profile" ng-src="{{profile.data}}" ng-click="selectImage('file-1')">
-			<input type="file" id="file-1" readfile="profile" accept="image/jpg">
+			<img class="t-upload-img fx-fs" id="splash" ng-src="{{splash.data}}" ng-click="selectImage('file-1')">
+			<input type="file" id="file-1" readfile="splash" accept="image/jpg">
 		</div>
 	</div>
 
@@ -28,10 +28,17 @@
 		<li>
 			<p>Config</p>
 			<div class="t-setting">
-				<input type="text" placeholder="aws account id" ng-model="settings.aws_account_id">
-				<input type="text" placeholder="aws access key id" ng-model="settings.aws_access_key_id">
-				<input type="text" placeholder="aws region" ng-model="settings.aws_region">
-				<button class="btn save" id="save" ng-click="save(settings, profile)">update</button>
+				<input type="text" placeholder="aws account id" id="aws-account-id" ng-model="settings.aws_account_id">
+				<input type="text" placeholder="aws access key id" id="aws-access-key-id" ng-model="settings.aws_access_key_id">
+				<input type="text" placeholder="aws secret access key" id="aws-secret-access-key" ng-model="settings.aws_secret_access_key">
+				<input type="text" placeholder="aws region" id="aws-region" ng-model="settings.aws_region">
+				<select id="aws-logging" ng-model="settings.aws_logging">
+					<option value="" selected="selected">- aws logging -</option>
+					<option value="true">yes</option>
+					<option value="false">no</option>
+				</select>
+				<input type="text" placeholder="aws s3 domain" id="aws-s3-domain" ng-model="settings.aws_s3_domain">
+				<button class="btn save" id="save" ng-click="save(settings, splash)">update</button>
 			</div>
 		</li>
 	</ul>

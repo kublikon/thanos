@@ -1,14 +1,16 @@
 {
     "name":"thanos",
     "private":false,
-    "version":"0.0.1",
+    "version":"0.0.2",
     "description":"Project deployment tool",
     "repository":{
         "url":"https://github.com/kublikon/thanos.git",
         "type":"git"
     },
     "contributors":[
-        "Jakub Szerszen <kublikon.apps@gmail.com>"
+        "Jakub Szerszen <kublikon.apps@gmail.com>",
+        "Taylor Coleman <taylorlc70@gmail.com>",
+        "Ben Nicholes <nicholes.ben@gmail.com>",
     ],
     "bugs":{
         "mail":"kublikon.apps@gmail.com",

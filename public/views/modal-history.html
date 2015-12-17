@@ -1,0 +1,27 @@
+<div class="t-modal">
+	<div class="t-modal-con">
+
+		<div class="t-head">
+			<span class="ka-close t-close fx-fs" ng-click="close()"></span>
+		</div>
+
+		<ul class="clearfix">
+			<li ng-show="0 != history.length" ng-repeat="deployment in deployments">
+				<div class="t-list" ng-click="openEditDeployment(deployment)">
+					@{{deployment.tag_version}}
+					<a ng-class="{ 't-started': deployment.is_started, 't-deployed': deployment.is_deployed, 't-stopped': deployment.is_stopped }"></a>
+					<span class="t-date">{{deployment.created_at}}</span>
+				</div>
+			</li>
+		</ul>
+
+		<div class="t-loading" id="modal-loading">
+			<span></span>
+		</div>
+
+		<div class="t-no-records" id="modal-no-records">
+			<p>nothing here</p>
+		</div>
+
+	</div>
+</div>

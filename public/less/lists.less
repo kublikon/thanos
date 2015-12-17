@@ -12,16 +12,23 @@
 .t-lists li .t-list > a img.on { opacity:1; } 
 
 .t-lists li .t-list a.t-icon { width:32px; padding:6px; margin-right:12px; font-size:26px; font-weight:200; text-transform:uppercase; text-align:center; border-radius:22px; background:#e9e9ee; color:#7c8996; cursor:pointer; }
+.t-lists li .t-list a.t-icon.spin { text-indent:100px; background:url(../img/icon-logo-spin-gray.png) no-repeat; background-size:100%; overflow:hidden;
+	-webkit-animation:spin 3s linear infinite; -moz-animation:spin 3s linear infinite; animation:spin 3s linear infinite;}
 
 /* text */
 .t-list .t-text { display:table-cell; float:left; }
 .t-list .t-text > a { color:@accent; cursor:pointer; }
 .t-list .t-text > p { margin:4px 0 0 0; color:#7C8996; }
 
+/* list - states */
+.t-lists li .t-list a.t-started { width:10px; height:10px; margin:10px 12px 0 0; display:inline-block; border-radius:5px; background:#7c8995; }
+.t-lists li .t-list a.t-deployed { width:10px; height:10px; margin:10px 12px 0 0; display:inline-block; border-radius:5px; background:#55b369; }
+.t-lists li .t-list a.t-stopped { width:10px; height:10px; margin:10px 12px 0 0; display:inline-block; border-radius:5px; background:@accent; }
+
 /* buttons */
 .t-lists li .t-list .t-buttons { position:absolute; right:0; top:19px; }
 
-.t-list .btn { padding:5px 14px; text-shadow:none; border:none; border-radius:20px; background:#e9e9ee; color:#7C8996; }
+.t-list .btn { padding:5px 14px; text-shadow:none; text-decoration:none; border:none; border-radius:20px; background:#e9e9ee; color:#7C8996; }
 .t-list .btn.on { background:@accent; color:#fff; }
 
 /* loading */

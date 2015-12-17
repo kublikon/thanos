@@ -7,8 +7,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 	check.user(false, function(){
 		storage.find('user', function(token){
 			
-			content.access_token = token.access_token,
-			content.user_id = token.id
+			content.access_token = token.access_token;
+			content.user_id = token.id;
 
 			service.get('api/deployments', content, function(data){
 
@@ -60,8 +60,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		$('html, body, .t-main').animate({ scrollTop: 0 }, 'fast');
 	};
 
-	$scope.getMoreUsers = function(){
-		service.get('api/users', content, function(data){
+	$scope.getMoreDeployments = function(){
+		service.get('api/deployments', content, function(data){
 			if(!data.error){
 				$scope.posts = $scope.posts.concat(data.posts);
 
@@ -88,7 +88,9 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 		var pass = 0;
 
-		pass += service.validate($scope.deployment_group, 'deployment_group', 'text', pass);
+		pass += service.validate($scope.deployment_group, 'deployment-group', 'text', pass);
+		pass += service.validate($scope.node_modules, 'node-modules', 'select', pass);
+		pass += service.validate($scope.revision_type, 'revision-type', 'select', pass);
 		pass += service.validate($scope.tag_version, 'tag-version', 'text', pass);
 		pass += service.validate($scope.description, 'description', 'textarea', pass);
 
@@ -99,6 +101,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					access_token: token.access_token,
 					user: window.main.user._id,
 					deployment_group: $scope.deployment_group,
+					node_modules: $scope.node_modules,
+					revision_type: $scope.revision_type,
 					tag_version: $scope.tag_version,
 					description: $scope.description
 				}
@@ -116,7 +120,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					
 						res.created_at = date.toLocaleDateString("en-US");
 
-						$scope.deployments.push(res);
+						helper.findAndReplace('deployment', 'deployment_group_id', $scope, res);
+
 						clear();
 					}
 				});
@@ -124,5 +129,75 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		} else { 
 			$('#save').prop('disabled', false);
 		}
+	};
+
+	$scope.update = function(){
+
+		$('#save').prop('disabled', true);
+
+		var pass = 0;
+
+		pass += service.validate($scope.edit.deployment_group, 'edit-deployment-group', 'text', pass);
+		pass += service.validate($scope.edit.node_modules, 'edit-node-modules', 'select', pass);
+		pass += service.validate($scope.edit.revision_type, 'edit-revision-type', 'select', pass);
+		pass += service.validate($scope.edit.tag_version, 'edit-tag-version', 'text', pass);
+		pass += service.validate($scope.edit.description, 'edit-description', 'textarea', pass);
+
+		if(pass == 0){
+			storage.find('user', function(token){
+
+				var data = {
+					access_token: token.access_token,
+					user: window.main.user._id,
+					deployment_group: $scope.edit.deployment_group,
+					node_modules: $scope.edit.node_modules,
+					revision_type: $scope.edit.revision_type,
+					tag_version: $scope.edit.tag_version,
+					description: $scope.edit.description
+				}
+
+				service.post('api/deployment', data, function(res){
+					if(res.error){
+						console.log(res);
+						$('#save').prop('disabled', false);
+					} else {
+						$('#save').prop('disabled', false);
+						$('#edit-deployment').slideUp();
+						$('#no-records').hide();
+
+						var date = new Date(res.created_at);
+					
+						res.created_at = date.toLocaleDateString("en-US");
+
+						helper.findAndReplace('deployment', 'deployment_group_id', $scope, res);
+
+						clear();
+					}
+				});
+			});
+		} else { 
+			$('#save').prop('disabled', false);
+		}
+	};
+
+	$scope.stop = function(deployment){
+		storage.find('user', function(token){
+
+			var data = {
+				access_token: token.access_token,
+				user: window.main.user._id,
+				id: deployment._id
+			}
+
+			service.post('api/deployment/stop', data, function(res){
+				if(res.error){
+					console.log(res);
+				} else {
+					deployment.is_started = false;
+					deployment.is_stopped = true;
+				}
+
+			});
+		});
 	};
 }

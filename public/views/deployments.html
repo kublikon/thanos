@@ -6,8 +6,18 @@
 <div class="t-new-item-main" id="new-deployment">
 	<div class="t-new-item-con">
 		<div class="t-new-item">
-			<input type="text" id="deployment_group" placeholder="deployment_group" ng-model="deployment_group">
+			<input type="text" id="deployment-group" placeholder="deployment_group" ng-model="deployment_group">
 			<input type="text" id="tag-version" placeholder="tag version" ng-model="tag_version">
+			<select id="node-modules" ng-model="node_modules">
+				<option value="" selected="selected">- node modules -</option>
+				<option value="install">install</option>
+				<option value="link">link</option>
+			</select>
+			<select id="revision-type" ng-model="revision_type">
+				<option value="" selected="selected">- revision type -</option>
+				<option value="GitHub">deploy from GitHub</option>
+				<option value="S3">deploy from S3</option>
+			</select>
 			<textarea rows="3" id="description" placeholder="write a description..." ng-model="description"></textarea>
 			<button class="btn save" id="save" ng-click="save()">deploy</button>
 			<button class="btn" ng-click="cancel()">cancel</button>
@@ -23,16 +33,28 @@
 			<ul class="t-edit-list">
 				<li><p>Deployment ID: {{edit.deployment_id}}</p></li>
 				<li><p>Deployment Group: {{edit.deployment_group}}</p></li>
-				<li><p>Status: {{edit.}}</p></li>
+				<li><p>Status: 
+					<a ng-class="{ 't-started': edit.is_started, 't-deployed': edit.is_deployed, 't-stopped': edit.is_stopped }"></a>
+				</p></li>
 				<li><p>Number of Deployments: {{edit.deplayment_count}}</p></li>
 				<li><p>Created: {{ edit.created_at}}</p></li>
 			</ul>
 		</li>
 		<li>
 			<div class="t-edit-item">
-				<input type="text" id="tag-version" placeholder="tag version" ng-model="edit.tag_version">
-				<textarea rows="3" id="description" placeholder="write a description..." ng-model="edit.description"></textarea>
-				<button class="btn save" id="save" ng-click="save()">re-deploy</button>
+				<input type="text" id="edit-tag-version" placeholder="tag version" ng-model="edit.tag_version">
+				<select id="edit-node-modules" ng-model="edit.node_modules">
+					<option value="" selected="selected">- node modules -</option>
+					<option value="install">install</option>
+					<option value="link">link</option>
+				</select>
+				<select id="edit-revision-type" ng-model="edit.revision_type">
+					<option value="" selected="selected">- revision type -</option>
+					<option value="GitHub">deploy from GitHub</option>
+					<option value="S3">deploy from S3</option>
+				</select>
+				<textarea rows="3" id="edit-description" placeholder="write a description..." ng-model="edit.description"></textarea>
+				<button class="btn save" id="save" ng-click="update()">re-deploy</button>
 				<button class="btn" ng-click="cancel()">cancel</button>
 			</div>
 		</li>
@@ -62,15 +84,16 @@
 	<ul class="t-lists clearfix">
 		<li ng-show="0 != deployments.length" ng-repeat="deployment in deployments | filter:search_input">
 			<div class="t-list clearfix">
-				<a class="t-icon" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
+				<a class="t-icon" ng-class="{ 'spin': deployment.is_started }" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
 				<div class="t-text">
 					<a ng-click="openEditDeployment(deployment)">{{deployment.deployment_group}}</a>
 					<p>{{deployment.branch}}@{{deployment.tag_version}}</p>
 				</div>
 				<div class="t-buttons">
-					<a class="btn" ng-click="showHistory(deployment)">History</a>
-					<a class="btn on" ng-show="{{!deployment.auth.is_active}}" ng-click="activateUser(deployment)">Restart</a>
-					<a class="btn" ng-show="{{deployment.auth.is_active}}" ng-click="deactivateUser(deployment)">Stop</a>
+					<a ng-class="{ 't-started': deployment.is_started, 't-deployed': deployment.is_deployed, 't-stopped': deployment.is_stopped }"></a>
+
+					<a class="btn" ng-click="showHistory(deployment)" ui-sref="deployments.history({ id: deployment.deployment_group_id })">History</a>
+					<a class="btn" ng-show="{{!deployment.is_deployed || !deployment.is_stopped}}" ng-click="stop(deployment)">Stop</a>
 				</div>
 			</div>
 		</li>
@@ -86,3 +109,8 @@
 
 	<div class="t-pagination" ng-click="getMoreUsers()"><a class="fx-fs"><i class="ka-down"></i></a></div>
 </div>
+
+<!-- modal -->
+<div id="t-modal" ui-view="modal"></div>
+<!-- END modal -->
+

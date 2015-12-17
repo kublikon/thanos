@@ -103,7 +103,7 @@ function menuCtrl($scope, $routeParams, $rootScope, $location, $http, service, s
 	$scope.showLogin = function(){
 		storage.check('user', function(login){ 
 			if(login){
-				$location.path('dashboard');
+				$location.path(window.main.user.username_public);
 			} else {
 				window.main.fx.showLogin();
 			}

@@ -24,7 +24,7 @@
 		<div class="t-menu">
 			<div class="t-menu-con">
 				<ul>
-					<li><a ng-click="to('')">stats</a></li>
+					<li><a ng-click="to('stats')">stats</a></li>
 					<li><a ng-click="to('users')">users</a></li>
 					<li><a ng-click="to('deployments')">deployments</a></li>
 					<li><a ng-click="to('settings')">settings</a></li>
@@ -38,8 +38,8 @@
 					<input type="text" id="main-search" placeholder="search" ng-model="search_text" ng-keyup="search(search_text, $event)">
 				</div>
 				<div class="t-company">
-					<a><img class="fx-fs" src="{{user.profile_s}}" imageload></a>
-					<h1>ustyme</h1>
+					<a><img class="fx-fs" src="{{company.profile_s}}" imageload></a>
+					<h1>{{company.company_name}}</h1>
 				</div>
 			</div>
 
@@ -51,7 +51,7 @@
 					<input type="text" id="device-search" placeholder="search" ng-model="search_text" ng-keyup="search(search_text, $event)">
 				</div>
 				<ul>
-					<li class="main" ng-click="to('')" id="device-stats-btn">Stats</li>
+					<li class="main" ng-click="to('stats')" id="device-stats-btn">Stats</li>
 					<li ng-click="to('users')" id="device-users-btn">Users</li>
 					<li ng-click="to('deployments')" id="device-deployments-btn">Deployments</li>
 					<li ng-click="to('settings')" id="device-settings-btn">Settings</li>

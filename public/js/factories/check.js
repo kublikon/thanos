@@ -10,9 +10,10 @@ app.factory('check', function($rootScope, storage, service, logout){
 				if(login){
 					if(!window.main.user){
 						storage.find('user', function(user){
-							service.get('api/user', user, function(user){
+							service.get('api/user', user, function(res){
 
-								$rootScope.user = window.main.user = user;
+								$rootScope.user = window.main.user = res.user;
+								$rootScope.company = window.main.company = res.company;
 								if(cb){
 									return cb();
 								}

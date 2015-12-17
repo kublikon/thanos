@@ -39,15 +39,21 @@ app.factory('helper', function($rootScope, $http, $location, service){
 				return cb(content);
 			});
 		},
-		bind: function(type, $scope, data, options, type_change){
+		bind: function(type, $scope, data, options, type_change, is_modal){
 			$scope[type + 's'] = [];
+
+			var modal = '';
+
+			if(is_modal){
+				modal = 'modal-';
+			}
 
 			if(data.error && data.error.code != 100){
 				$location.path('404');
 			} else if(data.error && data.error.code == 100 || data[type + 's'].length == 0){
-				$('#no-records').show();
+				$('#' + modal + 'no-records').show();
 			} else {
-				$('#no-records').hide();
+				$('#' + modal + 'no-records').hide();
 
 				if(type_change){
 					$scope[type_change + 's'] = data[type + 's'];
@@ -62,7 +68,23 @@ app.factory('helper', function($rootScope, $http, $location, service){
 				});
 			}
 
-			$('#loading').hide();
+			$('#' + modal + 'loading').hide();
+		},
+		findAndReplace: function(type, on, scope, data){
+
+			var is_found = false;
+			
+			scope[type + 's'].safeForEach(function(item, index){
+				if(item[on] == data[on]){
+					scope[type + 's'][index] = item;
+
+					is_found = true;
+				}
+			});
+
+			if(!is_found){
+				scope[type + 's'].push(data);
+			}
 		},
 		logout: function(){
 			storage.nuke();
