@@ -39,9 +39,6 @@ function usersCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 				if(res.error){
 					$location.path('404');
 				} else {
-
-					console.log(user.auth.is_active);
-
 					user.auth.is_active = true;
 				}
 			});
@@ -73,7 +70,7 @@ function usersCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 	$scope.getMoreUsers = function(){
 		service.get('api/users', content, function(data){
 			if(!data.error){
-				$scope.posts = $scope.posts.concat(data.posts);
+				$scope.users = $scope.users.concat(data.users);
 
 				content.skip += 8;
 

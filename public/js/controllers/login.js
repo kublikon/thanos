@@ -69,6 +69,13 @@ function loginCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 				if(data.error){
 					$scope.login.create = data;
 				} else {
+					$scope.login.first_name = undefined;
+					$scope.login.last_name = undefined;
+					$scope.login.email = undefined;
+					$scope.login.gender = undefined;
+					$scope.login.new_password = undefined;
+					$scope.login.confirm_password = undefined;
+
 					$scope.login.create = data;
 				}
 			});
