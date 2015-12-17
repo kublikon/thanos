@@ -15,7 +15,11 @@
 	"aws_logging": false,
 	"aws_s3_domain" : "",
 
-	"default_profile_s": "",
-	"default_profile_m": "",
-	"default_profile_l": ""
+	"default_profile_m_s": "/img/avatars/profile_m_s.png",
+	"default_profile_m_m": "/img/avatars/profile_m_m.png",
+	"default_profile_m_l": "/img/avatars/profile_m_l.png",
+
+	"default_profile_f_s": "/img/avatars/profile_f_s.png",
+	"default_profile_f_m": "/img/avatars/profile_f_m.png",
+	"default_profile_f_l": "/img/avatars/profile_f_l.png"
 }

@@ -61,6 +61,7 @@ function loginCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 				first_name: $scope.login.first_name,
 				last_name: $scope.login.last_name,
 				email: $scope.login.email,
+				gender: $scope.login.gender,
 				password: $scope.login.new_password
 			}
 

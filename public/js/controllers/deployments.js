@@ -15,7 +15,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				data.deployments.safeForEach(function(deployment, index){
 					var date = new Date(deployment.created_at);
 					
-					data.deployments[index].created_at = date.toLocaleDateString("en-US");
+					data.deployments[index].created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 				});
 
 				helper.bind('deployment', $scope, data);
@@ -118,7 +118,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 						var date = new Date(res.created_at);
 					
-						res.created_at = date.toLocaleDateString("en-US");
+						res.created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 
 						helper.findAndReplace('deployment', 'deployment_group_id', $scope, res);
 
@@ -167,7 +167,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 						var date = new Date(res.created_at);
 					
-						res.created_at = date.toLocaleDateString("en-US");
+						res.created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 
 						helper.findAndReplace('deployment', 'deployment_group_id', $scope, res);
 

@@ -8,12 +8,16 @@ function historyCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 			content.access_token = token.access_token;
 			content.user_id = token.id;
 
+			$scope.deployments = [];
+
 			service.get('api/deployment', content, function(data){
 				data.deployments.safeForEach(function(deployment, index){
 					var date = new Date(deployment.created_at);
 					
-					data.deployments[index].created_at = date.toLocaleDateString("en-US");
+					data.deployments[index].created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 				});
+
+				$scope.name = data.deployments[0].deployment_group;
 
 				helper.bind('deployment', $scope, data, undefined, undefined, true);
 			});

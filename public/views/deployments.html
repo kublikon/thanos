@@ -35,6 +35,7 @@
 				<li><p>Deployment Group: {{edit.deployment_group}}</p></li>
 				<li><p>Status: 
 					<a ng-class="{ 't-started': edit.is_started, 't-deployed': edit.is_deployed, 't-stopped': edit.is_stopped }"></a>
+					<span></span>
 				</p></li>
 				<li><p>Number of Deployments: {{edit.deplayment_count}}</p></li>
 				<li><p>Created: {{ edit.created_at}}</p></li>
@@ -70,8 +71,9 @@
 				<a id="selected-filter">{{filter_sort}}<i class="ka-down ka-ld"></i></a>
 				<ul>
 					<li ng-click="filter('all')" id="filter-liked">All</li>
-					<li ng-click="filter('activated')" id="filter-recent">Activated</li>
-					<li ng-click="filter('deactivated')" id="filter-popular">Deactivated</li>
+					<li ng-click="filter('started')" id="filter-recent">Started</li>
+					<li ng-click="filter('deployed')" id="filter-popular">Deployed</li>
+					<li ng-click="filter('stopped')" id="filter-popular">Stopped</li>
 				</ul>
 			</li>
 		</ul>
@@ -82,7 +84,7 @@
 
 <div class="t-lists-main">
 	<ul class="t-lists clearfix">
-		<li ng-show="0 != deployments.length" ng-repeat="deployment in deployments | filter:search_input">
+		<li ng-show="0 != deployments.length" ng-repeat="deployment in deployments | filter:search_input | orderBy:'-created_at'">
 			<div class="t-list clearfix">
 				<a class="t-icon" ng-class="{ 'spin': deployment.is_started }" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
 				<div class="t-text">

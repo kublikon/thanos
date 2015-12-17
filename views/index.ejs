@@ -88,6 +88,11 @@
 					<p class="error">{{login.create.error.message}}</p>
 					<input type="text" placeholder="first name" class="t-first" ng-model="login.first_name" />
 					<input type="text" placeholder="last name" class="t-last" ng-model="login.last_name" />
+					<select id="aws-logging" ng-model="login.gender">
+						<option value="" selected="selected">- gender -</option>
+						<option value="male">male</option>
+						<option value="female">female</option>
+					</select>
 					<input type="email" placeholder="email" ng-model="login.email" />
 					<input type="password" placeholder="password" ng-model="login.new_password" />
 					<input type="password" placeholder="confirm password" ng-model="login.confirm_password" />
