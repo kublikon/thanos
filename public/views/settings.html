@@ -26,7 +26,7 @@
 			</div>
 		</li>
 		<li>
-			<p>Config</p>
+			<p>AWS Config</p>
 			<div class="t-setting">
 				<input type="text" placeholder="aws account id" id="aws-account-id" ng-model="settings.aws_account_id">
 				<input type="text" placeholder="aws access key id" id="aws-access-key-id" ng-model="settings.aws_access_key_id">
@@ -38,6 +38,13 @@
 					<option value="false">no</option>
 				</select>
 				<input type="text" placeholder="aws s3 domain" id="aws-s3-domain" ng-model="settings.aws_s3_domain">
+			</div>
+		</li>
+		<li>
+			<p>GitHub Config</p>
+			<div class="t-setting">
+				<input type="text" placeholder="github username" id="github-username" ng-model="settings.github_username">
+				<input type="text" placeholder="github password" id="github-password" ng-model="settings.github_password">
 				<button class="btn save" id="save" ng-click="save(settings, splash)">update</button>
 			</div>
 		</li>

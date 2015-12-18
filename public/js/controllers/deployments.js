@@ -100,9 +100,13 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				var data = {
 					access_token: token.access_token,
 					user: window.main.user._id,
+					application_name: $scope.application_name,
 					deployment_group: $scope.deployment_group,
 					node_modules: $scope.node_modules,
 					revision_type: $scope.revision_type,
+					github_project_commit_id: $scope.github_project_commit_id,
+					github_project_path: $scope.github_project_path,
+					s3_project_path: $scope.s3_project_path,
 					tag_version: $scope.tag_version,
 					description: $scope.description
 				}
@@ -149,9 +153,13 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				var data = {
 					access_token: token.access_token,
 					user: window.main.user._id,
+					application_name: $scope.edit.application_name,
 					deployment_group: $scope.edit.deployment_group,
 					node_modules: $scope.edit.node_modules,
 					revision_type: $scope.edit.revision_type,
+					github_project_commit_id: $scope.edit.github_project_commit_id,
+					github_project_path: $scope.edit.github_project_path,
+					s3_project_path: $scope.edit.s3_project_path,
 					tag_version: $scope.edit.tag_version,
 					description: $scope.edit.description
 				}

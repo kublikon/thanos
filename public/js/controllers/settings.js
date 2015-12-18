@@ -42,7 +42,9 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 					aws_secret_access_key: settings.aws_secret_access_key,
 					aws_region: settings.aws_region,
 					aws_logging: settings.aws_logging,
-					aws_s3_domain: settings.aws_s3_domain
+					aws_s3_domain: settings.aws_s3_domain,
+					github_username: settings.github_username,
+					github_password: settings.github_password
 				};
 
 				if($scope.splash){

@@ -6,6 +6,7 @@
 <div class="t-new-item-main" id="new-deployment">
 	<div class="t-new-item-con">
 		<div class="t-new-item">
+			<input type="text" id="application-name" placeholder="application name" ng-model="application_name">
 			<input type="text" id="deployment-group" placeholder="deployment_group" ng-model="deployment_group">
 			<input type="text" id="tag-version" placeholder="tag version" ng-model="tag_version">
 			<select id="node-modules" ng-model="node_modules">
@@ -13,11 +14,16 @@
 				<option value="install">install</option>
 				<option value="link">link</option>
 			</select>
-			<select id="revision-type" ng-model="revision_type">
+			<select id="revision-type" ng-model="revision_type" updateview="new-deployment">
 				<option value="" selected="selected">- revision type -</option>
-				<option value="GitHub">deploy from GitHub</option>
-				<option value="S3">deploy from S3</option>
+				<option value="GitHub" view="github-project-commit-id, github-project-path">deploy from GitHub</option>
+				<option value="S3" view="s3-project-path">deploy from S3</option>
 			</select>
+
+			<input type="text" class="hide" id="github-project-commit-id" placeholder="github project commit id" ng-model="github_project_commit_id">
+			<input type="text" class="hide" id="github-project-path" placeholder="github project path" ng-model="github_project_path">
+			<input type="text" class="hide" id="s3-project-path" placeholder="s3 project path" ng-model="s3_project_path">
+
 			<textarea rows="3" id="description" placeholder="write a description..." ng-model="description"></textarea>
 			<button class="btn save" id="save" ng-click="save()">deploy</button>
 			<button class="btn" ng-click="cancel()">cancel</button>
@@ -31,6 +37,7 @@
 	<ul class="t-edit-item-con clearfix">
 		<li>
 			<ul class="t-edit-list">
+				<li><p>Application Name: {{edit.application_name}}</p></li>
 				<li><p>Deployment ID: {{edit.deployment_id}}</p></li>
 				<li><p>Deployment Group: {{edit.deployment_group}}</p></li>
 				<li><p>Status: 
@@ -49,11 +56,16 @@
 					<option value="install">install</option>
 					<option value="link">link</option>
 				</select>
-				<select id="edit-revision-type" ng-model="edit.revision_type">
+				<select id="edit-revision-type" ng-model="edit.revision_type" updateview="edit-deployment">
 					<option value="" selected="selected">- revision type -</option>
-					<option value="GitHub">deploy from GitHub</option>
-					<option value="S3">deploy from S3</option>
+					<option value="GitHub" view="edit-github-project-commit-id, edit-github-project-path">deploy from GitHub</option>
+					<option value="S3" view="edit-s3-project-path">deploy from S3</option>
 				</select>
+
+				<input type="text" class="hide" id="edit-github-project-commit-id" placeholder="github project commit id" ng-model="edit.github_project_commit_id">
+				<input type="text" class="hide" id="edit-github-project-path" placeholder="github project path" ng-model="edit.github_project_path">
+				<input type="text" class="hide" id="edit-s3-project-path" placeholder="s3 project path" ng-model="edit.s3_project_path">
+
 				<textarea rows="3" id="edit-description" placeholder="write a description..." ng-model="edit.description"></textarea>
 				<button class="btn save" id="save" ng-click="update()">re-deploy</button>
 				<button class="btn" ng-click="cancel()">cancel</button>
