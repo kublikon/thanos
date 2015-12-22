@@ -11,7 +11,7 @@ echo "";
 
 echo "Moving project to desired directory."
 
-# cd ../../../
+cd ../
 
 pwd
 
