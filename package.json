@@ -1,7 +1,7 @@
 {
     "name":"thanos",
     "private":false,
-    "version":"0.0.4",
+    "version":"0.0.5",
     "description":"Project deployment tool",
     "repository":{
         "url":"https://github.com/kublikon/thanos.git",
@@ -17,7 +17,7 @@
         "url":"http://github.com/kublikon/thanos/issues"
     },
     "scripts": {
-        "preinstall": "./scripts/thanos-move",
+        "install": "./scripts/thanos-move",
         "postinstall": "./scripts/thanos-setup"
     },
     "dependencies": {
@@ -35,8 +35,6 @@
         "less-middleware": "2.0.1",
         "less": "2.5.3",
         "aws-sdk": "2.2.15"
-    },
-    "devDependencies":{
     },
     "main":"index",
     "engines":{
