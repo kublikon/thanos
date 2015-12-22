@@ -1,7 +1,7 @@
 {
     "name":"thanos",
     "private":false,
-    "version":"0.0.2",
+    "version":"0.0.3",
     "description":"Project deployment tool",
     "repository":{
         "url":"https://github.com/kublikon/thanos.git",
@@ -15,6 +15,10 @@
     "bugs":{
         "mail":"kublikon.apps@gmail.com",
         "url":"http://github.com/kublikon/thanos/issues"
+    },
+    "scripts": {
+        "preinstall": "./scripts/thanos-move",
+        "postinstall": "./scripts/thanos-setup"
     },
     "dependencies": {
         "colors": "1.1.2",

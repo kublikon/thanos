@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "";
+echo "----------------------------------------------";
+echo " ******  ** **   ***   **   **   ****    **** ";
+echo "   **    *****  ** **  **** **  **  **  ***   ";
+echo "   **    *****  *****  ** ****  **  **    *** ";
+echo "   **    ** **  ** **  **   **   ****   ****  ";
+echo "----------------------------------------------";
+echo "";
+
+echo "Moving project to desired directory."
+
+cd ../../../
+
+pwd
+
+cp -r ./node_modules/thanos/* ./
+
+rm -rf ./node_modules/thanos
