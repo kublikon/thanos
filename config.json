@@ -1,9 +1,7 @@
 {
 	"mode": "dev",
-	"port_dev": 3000,
-	"port_prod": 8080,
-	"mongo_path_dev": "mongodb://localhost/thanos",
-	"mongo_path_prod": "mongodb://localhost/thanos",
+	"port": 3000,
+	"mongo_path": "mongodb://localhost/thanos",
 	"salt": "",
 	"title": "Thanos",
 
