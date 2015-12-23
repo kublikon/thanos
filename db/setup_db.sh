@@ -1,4 +1,3 @@
-
 import()
 {
     echo "Importing in to db:$1 from dir:setup"

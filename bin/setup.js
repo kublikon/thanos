@@ -6,8 +6,13 @@
 (function(){
 
 	var fs = require('fs'),
+		log = require('../lib/console'),
+		config = require('../lib/config'),
+		db = require('../lib/database'),
 		data = fs.readFileSync('../config.json', 'utf-8');
 
+
+	// updating config.json
 	data = JSON.parse(data);
 
 	data.mongo_path = process.argv[2];
@@ -20,5 +25,33 @@
 	data.aws_s3_domain = process.argv[9],
 
 	fs.writeFileSync('../config.json', JSON.stringify(data), 'utf-8');
+
+	log('i', 'config.json updated');
+
+	// setting up password for default user
+	db.auth.findOne({ username: 'admin@user.com' })
+	.exec(function(err, auth){
+		if(err){
+			log('e', 'password update failed');
+
+			process.exit();
+		} else {
+			auth.password = 'thanos';
+
+			auth.save(function(err_save){
+				if(err_save){
+					log('e', 'password update failed');
+
+					process.exit();
+				} else {
+					log('i', 'default user set: un: admin@user.com, pw: thanos');
+
+					log('w', 'we recommend that you create a new user and delete the default user once in production');
+
+					process.exit();
+				}
+			});
+		}
+	});
 
 })();

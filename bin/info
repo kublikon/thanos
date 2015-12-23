@@ -11,6 +11,7 @@ echo "";
 
 echo "To setup thanos use:   thanos --setup";
 echo "For a local setup use: thanos --setup <path/to/directory>";
+echo "After setup the default user is: un: admin@user.com, pw: thanos";
 echo "";
 echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 echo "";

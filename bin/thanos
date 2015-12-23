@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dir="$( dirname "${BASH_SOURCE[0]}" )";
+lib=$dir/../lib/node_modules/thanos;
 
 param=$1;
 param_2=$2;
@@ -19,6 +20,9 @@ function help {
 	echo "";
 	echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 	echo "";
+	echo "$lib - global project directory";
+	echo "";
+	echo "";
 }
 
 function setup {
@@ -30,9 +34,10 @@ function setup {
 
 	cd $dir/../lib/node_modules/thanos/bin;
 
-	echo "8: enter path to mongodb (ex: mongodb://localhost/thanos - for thanos data storage):";
+	echo "8: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
 
-	read path; 
+	read path;
+	db=`expr "$path" : '.*\(......\)'`;
 
 	echo "";
 	echo "7. enter random letter/number combination for salt - for encrypting sensitive information:";
@@ -68,6 +73,13 @@ function setup {
 	echo "1. enter AWS domain:";
 
 	read domain;
+
+	import(){
+		mongoimport --upsert --db $db --collection users ../db/setup/users.json
+		mongoimport --upsert --db $db --collection auths ../db/setup/auths.json
+	}
+
+	import;
 
 	node ./setup.js $path $salt $account $key $secret $bucket $region $domain
 }
