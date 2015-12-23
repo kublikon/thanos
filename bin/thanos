@@ -10,11 +10,12 @@ function help {
 	echo "Usage: thanos <command>";
 	echo "";
 	echo "where <command> is one of:";
-	echo "      -h, --help                  general help/usage of thanos";
-	echo "      -st, --setup                sets up thanos (globally)";
-	echo "      -st, --setup <path>         sets up thanos in the given path";
-	echo "      -r, --run                   globally starts thanos project";
-	echo "      -s, --stop                  globally stops thanos project";
+	echo "      -h, --help                    general help/usage of thanos";
+	echo "      -st, --setup                  sets up thanos (globally)";
+	echo "      -st <path>, --setup <path>    sets up thanos in the given path";
+	echo "      -r, --run                     globally starts thanos project";
+	echo "      -r -c, --run -c               globally starts thanos and log to a file";
+	echo "      -s, --stop                    globally stops thanos project";
 	echo "";
 	echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 	echo "";
@@ -80,7 +81,12 @@ function run {
 
 	cd $dir/../lib/node_modules/thanos;
 
-	node ./index.js
+	if [[ $param_2 ]]
+	then
+		exec node ./index.js . >> ./logs/thanos.log 2>&1 &
+	else 
+		node ./index.js
+	fi
 }
 
 function stop {

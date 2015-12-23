@@ -12,7 +12,7 @@ Project deployment tool for Nodejs and AWS.
 
 ### Recommended Setup
 
-The easiest way to setup Thanos is from [npm](https://www.npmjs.com/package/thanos). This will help you setup the project and install all required dependencies including a default user for Thanos.
+The easiest way to setup Thanos is from [npm](https://www.npmjs.com/package/thanos) with `npm install -g thanos` command. This will help you setup the project and install all required dependencies including a default user for Thanos.
 
 > Please have your nodejs, mongodb installed and running.
 
