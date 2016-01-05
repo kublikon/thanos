@@ -19,7 +19,7 @@ a default user for Thanos.
 
 ### Development Setup
 For development we recommend that Thanos is not installed in a global space. To do this first clone the repo: `git clone https://github.com/kublikon/thanos.git` and then run the `npm install` command in the project space. Once
-Thanos is installed you can configure it up by running `thanos -st` command from any terminal location.
+Thanos is installed you can configure it by running `thanos -st` command from any terminal location.
 
 > Please have your nodejs, mongodb installed and running.
 
