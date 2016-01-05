@@ -9,6 +9,8 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 	});
 
 	function bind(data){
+		console.log(data);
+
 		$scope.profile = data.profile;
 		$scope.splash = {};
 		$scope.splash.data = data.profile.profile_m;

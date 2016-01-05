@@ -1,5 +1,10 @@
 #!/bin/bash
 
+dir=`pwd -P`;
+bin="$HOME/.node/bin";
+lib="$HOME/.node/lib";
+path="$lib/node_modules/thanos";
+
 echo "";
 echo "----------------------------------------------";
 echo " ******  ** **   ***   **   **   ****    **** ";
@@ -9,13 +14,29 @@ echo "   **    ** **  ** **  **   **   ****   ****  ";
 echo "----------------------------------------------";
 echo "";
 
-echo "To setup thanos use:   thanos --setup";
-echo "For a local setup use: thanos --setup <path/to/directory>";
+# Detect if is installed globally - if not then move thanos bin to global space and update thanos-path
+
+if [[ $dir == $path ]]
+then
+	echo "- global -";
+	echo "";
+
+	rm -f $bin/thanos-path;
+else 
+	echo "- local -";
+	echo "";
+
+	cp -f $dir/thanos $bin
+	echo $dir > $bin/thanos-path
+fi
+
+echo "To setup thanos use:   > thanos --setup";
+echo "For a local setup use: > thanos --setup <path/to/directory>";
 echo "After setup the default user is: un: admin@user.com, pw: thanos";
 echo "";
 echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 echo "";
-echo "For additional commands use: thanos";
+echo "For additional commands use: > thanos";
 
 echo "";
 echo "";
