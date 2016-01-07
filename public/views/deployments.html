@@ -6,9 +6,19 @@
 <div class="t-new-item-main" id="new-deployment">
 	<div class="t-new-item-con">
 		<div class="t-new-item">
-			<input type="text" id="application-name" placeholder="application name" ng-model="application_name">
-			<input type="text" id="deployment-group" placeholder="deployment_group" ng-model="deployment_group">
-			<input type="text" id="tag-version" placeholder="tag version" ng-model="tag_version">
+			<select id="application-name" ng-model="application_name" ng-options="application as application for application in applications">
+				<option value="" selected="selected">- application names -</option>
+			</select>
+			<input type="text" id="deployment-group" placeholder="deployment group" ng-model="deployment_group">
+			<select id="AWS-groups" ng-model="group" ng-options="option_group.GroupId as option_group.GroupName for option_group in groups">
+				<option value="" selected="selected">- security groups -</option>
+			</select>
+			<select id="AWS-roles" ng-model="role" ng-options="option_role as option_role.RoleName for option_role in roles">
+				<option value="" selected="selected">- roles -</option>
+			</select>
+			<select id="AWS-AMIs" ng-model="AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
+				<option value="" selected="selected">- environment AMIs -</option>
+			</select>
 			<select id="node-modules" ng-model="node_modules">
 				<option value="" selected="selected">- node modules -</option>
 				<option value="install">install</option>
@@ -17,12 +27,19 @@
 			<select id="revision-type" ng-model="revision_type" updateview="new-deployment">
 				<option value="" selected="selected">- revision type -</option>
 				<option value="GitHub" view="github-project-commit-id, github-project-path">deploy from GitHub</option>
-				<option value="S3" view="s3-project-path">deploy from S3</option>
+				<option value="S3" view="s3-project-bucket, s3-project-key, s3-project-bundle-type">deploy from S3</option>
 			</select>
 
-			<input type="text" class="hide" id="github-project-commit-id" placeholder="github project commit id" ng-model="github_project_commit_id">
 			<input type="text" class="hide" id="github-project-path" placeholder="github project path" ng-model="github_project_path">
-			<input type="text" class="hide" id="s3-project-path" placeholder="s3 project path" ng-model="s3_project_path">
+			<input type="text" class="hide" id="github-project-commit-id" placeholder="github project commit id" ng-model="github_project_commit_id">
+			<input type="text" class="hide" id="s3-project-bucket" placeholder="S3 project bucket" ng-model="s3_project_bucket">
+			<input type="text" class="hide" id="s3-project-key" placeholder="S3 project key" ng-model="s3_project_key">
+			<select class="hide" id="s3-project-bundle-type" ng-model="s3_project_bundle_type">
+				<option value="" selected="selected">- bundle type -</option>
+				<option value="tar">tar</option>
+				<option value="tgz">tgz</option>
+				<option value="zip">zip</option>
+			</select>
 
 			<textarea rows="3" id="description" placeholder="write a description..." ng-model="description"></textarea>
 			<button class="btn save" id="save" ng-click="save()">deploy</button>
@@ -42,7 +59,7 @@
 				<li><p>Deployment Group: {{edit.deployment_group}}</p></li>
 				<li><p>Status: 
 					<a ng-class="{ 't-started': edit.is_started, 't-deployed': edit.is_deployed, 't-stopped': edit.is_stopped }"></a>
-					<span></span>
+					<span>{{edit.status_description}}</span>
 				</p></li>
 				<li><p>Number of Deployments: {{edit.deplayment_count}}</p></li>
 				<li><p>Created: {{ edit.created_at}}</p></li>
@@ -50,7 +67,15 @@
 		</li>
 		<li>
 			<div class="t-edit-item">
-				<input type="text" id="edit-tag-version" placeholder="tag version" ng-model="edit.tag_version">
+				<select id="AWS-groups" ng-model="edit.group" ng-options="option_group.GroupId as option_group.GroupName for option_group in groups">
+					<option value="" selected="selected">- security groups -</option>
+				</select>
+				<select id="AWS-roles" ng-model="edit.role" ng-options="option_role as option_role.RoleName for option_role in roles">
+					<option value="" selected="selected">- roles -</option>
+				</select>
+				<select id="AWS-AMIs" ng-model="edit.AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
+					<option value="" selected="selected">- environment AMIs -</option>
+				</select>
 				<select id="edit-node-modules" ng-model="edit.node_modules">
 					<option value="" selected="selected">- node modules -</option>
 					<option value="install">install</option>
@@ -59,12 +84,19 @@
 				<select id="edit-revision-type" ng-model="edit.revision_type" updateview="edit-deployment">
 					<option value="" selected="selected">- revision type -</option>
 					<option value="GitHub" view="edit-github-project-commit-id, edit-github-project-path">deploy from GitHub</option>
-					<option value="S3" view="edit-s3-project-path">deploy from S3</option>
+					<option value="S3" view="edit-s3-project-bucket, edit-s3-project-key, edit-s3-project-bundle-type">deploy from S3</option>
 				</select>
 
-				<input type="text" class="hide" id="edit-github-project-commit-id" placeholder="github project commit id" ng-model="edit.github_project_commit_id">
 				<input type="text" class="hide" id="edit-github-project-path" placeholder="github project path" ng-model="edit.github_project_path">
-				<input type="text" class="hide" id="edit-s3-project-path" placeholder="s3 project path" ng-model="edit.s3_project_path">
+				<input type="text" class="hide" id="edit-github-project-commit-id" placeholder="github project commit id" ng-model="edit.github_project_commit_id">
+				<input type="text" class="hide" id="edit-s3-project-bucket" placeholder="S3 project bucket" ng-model="edit.s3_project_bucket">
+				<input type="text" class="hide" id="edit-s3-project-key" placeholder="S3 project key" ng-model="edit.s3_project_key">
+				<select class="hide" id="edit-s3-project-bundle-type" ng-model="edit.s3_project_bundle_type">
+					<option value="" selected="selected">- bundle type -</option>
+					<option value="tar">tar</option>
+					<option value="tgz">tgz</option>
+					<option value="zip">zip</option>
+				</select>
 
 				<textarea rows="3" id="edit-description" placeholder="write a description..." ng-model="edit.description"></textarea>
 				<button class="btn save" id="save" ng-click="update()">re-deploy</button>
@@ -101,12 +133,12 @@
 				<a class="t-icon" ng-class="{ 'spin': deployment.is_started }" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
 				<div class="t-text">
 					<a ng-click="openEditDeployment(deployment)">{{deployment.deployment_group}}</a>
-					<p>{{deployment.branch}}@{{deployment.tag_version}}</p>
+					<p>{{deployment.revision_type}}@{{deployment.github_project_commit_id}}{{deployment.s3_project_key}}</p>
 				</div>
 				<div class="t-buttons">
 					<a ng-class="{ 't-started': deployment.is_started, 't-deployed': deployment.is_deployed, 't-stopped': deployment.is_stopped }"></a>
 
-					<a class="btn" ng-click="showHistory(deployment)" ui-sref="deployments.history({ id: deployment.deployment_group_id })">History</a>
+					<a class="btn" ng-click="showHistory(deployment)" ui-sref="deployments.history({ id: deployment.application_name + '-' + deployment.deployment_group })">History</a>
 					<a class="btn" ng-show="{{!deployment.is_deployed || !deployment.is_stopped}}" ng-click="stop(deployment)">Stop</a>
 				</div>
 			</div>

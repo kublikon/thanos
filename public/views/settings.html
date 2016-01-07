@@ -26,11 +26,18 @@
 			</div>
 		</li>
 		<li>
+			<p>GitHub Config</p>
+			<div class="t-setting">
+				<input type="text" placeholder="github username" id="github-username" ng-model="settings.github_username">
+				<input type="password" placeholder="github password" id="github-password" ng-model="settings.github_password">
+			</div>
+		</li>
+		<li>
 			<p>AWS Config</p>
 			<div class="t-setting">
 				<input type="text" placeholder="aws account id" id="aws-account-id" ng-model="settings.aws_account_id">
 				<input type="text" placeholder="aws access key id" id="aws-access-key-id" ng-model="settings.aws_access_key_id">
-				<input type="text" placeholder="aws secret access key" id="aws-secret-access-key" ng-model="settings.aws_secret_access_key">
+				<input type="password" placeholder="aws secret access key" id="aws-secret-access-key" ng-model="settings.aws_secret_access_key">
 				<input type="text" placeholder="aws region" id="aws-region" ng-model="settings.aws_region">
 				<select id="aws-logging" ng-model="settings.aws_logging">
 					<option value="" selected="selected">- aws logging -</option>
@@ -41,13 +48,13 @@
 			</div>
 		</li>
 		<li>
-			<p>GitHub Config</p>
+			<p>AWS Preferences</p>
 			<div class="t-setting">
-				<input type="text" placeholder="github username" id="github-username" ng-model="settings.github_username">
-				<input type="text" placeholder="github password" id="github-password" ng-model="settings.github_password">
+				<input type="text" placeholder="aws region" id="aws-region" ng-model="settings.aws_region">
 				<button class="btn save" id="save" ng-click="save(settings, splash)">update</button>
 			</div>
 		</li>
+		
 	</ul>
 </div>
 <!-- END settings -->

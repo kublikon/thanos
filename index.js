@@ -17,6 +17,7 @@
         
         auth = require('./lib/services/auth'),
         user = require('./lib/services/user'),
+        applications = require('./lib/services/applications'),
         deployments = require('./lib/services/deployments'),
         likes = require('./lib/services/likes'),
         comments = require('./lib/services/comments'),
@@ -119,6 +120,7 @@
     // services
     auth(app);
     user(app);
+    applications(app);
     deployments(app);
     likes(app);
     comments(app);

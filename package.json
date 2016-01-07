@@ -38,7 +38,8 @@
         "connect-assetmanager": "0.0.28",
         "less-middleware": "2.0.1",
         "less": "2.5.3",
-        "aws-sdk": "2.2.15"
+        "aws-sdk": "2.2.6",
+        "async": "1.5.1"
     },
     "preferGlobal": true,
     "engines": {

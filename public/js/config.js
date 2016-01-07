@@ -14,6 +14,11 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'views/users.html',
                 controller: 'usersCtrl'
             })
+            .state('applications', {
+                url: '/applications',
+                templateUrl: 'views/applications.html',
+                controller: 'applicationsCtrl'
+            })
             .state('deployments', {
                 url: '/deployments',
                 templateUrl: 'views/deployments.html',

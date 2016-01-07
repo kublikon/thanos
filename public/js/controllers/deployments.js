@@ -12,13 +12,15 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 			service.get('api/deployments', content, function(data){
 
+				console.log(data);
+
 				data.deployments.safeForEach(function(deployment, index){
 					var date = new Date(deployment.created_at);
 					
 					data.deployments[index].created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 				});
 
-				helper.bind('deployment', $scope, data);
+				helper.bind('deployment', $scope, data, data);
 
 				content.skip += 8;
 			});
@@ -31,8 +33,13 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		$('#new-deployment').slideUp();
 		$('#edit-deployment').slideUp();
 
+		$scope.application_name = '';
 		$scope.deployment_group = '';
-		$scope.tag_version = '';
+		$scope.selected_group = '';
+		$scope.selected_role = '';
+		$scope.selected_AMI = '';
+		$scope.node_modules = '';
+		$scope.revision_type = '';
 		$scope.description = '';
 	};
 
@@ -91,7 +98,6 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		pass += service.validate($scope.deployment_group, 'deployment-group', 'text', pass);
 		pass += service.validate($scope.node_modules, 'node-modules', 'select', pass);
 		pass += service.validate($scope.revision_type, 'revision-type', 'select', pass);
-		pass += service.validate($scope.tag_version, 'tag-version', 'text', pass);
 		pass += service.validate($scope.description, 'description', 'textarea', pass);
 
 		if(pass == 0){
@@ -100,14 +106,19 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				var data = {
 					access_token: token.access_token,
 					user: window.main.user._id,
+					group: $scope.group,
+					role: $scope.role.RoleName,
+					arn: $scope.role.Arn,
+					AMI: $scope.AMI,
 					application_name: $scope.application_name,
 					deployment_group: $scope.deployment_group,
 					node_modules: $scope.node_modules,
 					revision_type: $scope.revision_type,
 					github_project_commit_id: $scope.github_project_commit_id,
 					github_project_path: $scope.github_project_path,
-					s3_project_path: $scope.s3_project_path,
-					tag_version: $scope.tag_version,
+					s3_project_bucket: $scope.s3_project_bucket,
+					s3_project_key: $scope.s3_project_key,
+					s3_project_bundle_type: $scope.s3_project_bundle_type,
 					description: $scope.description
 				}
 
@@ -141,11 +152,11 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 		var pass = 0;
 
-		pass += service.validate($scope.edit.deployment_group, 'edit-deployment-group', 'text', pass);
-		pass += service.validate($scope.edit.node_modules, 'edit-node-modules', 'select', pass);
-		pass += service.validate($scope.edit.revision_type, 'edit-revision-type', 'select', pass);
-		pass += service.validate($scope.edit.tag_version, 'edit-tag-version', 'text', pass);
-		pass += service.validate($scope.edit.description, 'edit-description', 'textarea', pass);
+		// pass += service.validate($scope.edit.deployment_group, 'edit-deployment-group', 'text', pass);
+		// pass += service.validate($scope.edit.node_modules, 'edit-node-modules', 'select', pass);
+		// pass += service.validate($scope.edit.revision_type, 'edit-revision-type', 'select', pass);
+		// pass += service.validate($scope.edit.tag_version, 'edit-tag-version', 'text', pass);
+		// pass += service.validate($scope.edit.description, 'edit-description', 'textarea', pass);
 
 		if(pass == 0){
 			storage.find('user', function(token){
@@ -153,6 +164,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				var data = {
 					access_token: token.access_token,
 					user: window.main.user._id,
+					role: $scope.selected_role,
+					AMI: $scope.selected_AMI,
 					application_name: $scope.edit.application_name,
 					deployment_group: $scope.edit.deployment_group,
 					node_modules: $scope.edit.node_modules,
@@ -160,7 +173,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					github_project_commit_id: $scope.edit.github_project_commit_id,
 					github_project_path: $scope.edit.github_project_path,
 					s3_project_path: $scope.edit.s3_project_path,
-					tag_version: $scope.edit.tag_version,
+					// tag_version: $scope.edit.tag_version,
 					description: $scope.edit.description
 				}
 

@@ -1,0 +1,50 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- new application -->
+<div class="t-new-item-main" id="new-application">
+	<div class="t-new-item-con">
+		<div class="t-new-item">
+			<input type="text" id="application-name" placeholder="application name" ng-model="application_name">
+			<button class="btn save" id="save" ng-click="save()">save</button>
+			<button class="btn" ng-click="cancel()">cancel</button>
+		</div>
+	</div>
+</div>
+<!-- END new application -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs">
+		<a class="t-new" ng-click="openNewApplication()"><i class="ka-plus ka-ld"></i>New</a>
+	</div>
+</div>
+<!-- END search -->
+
+<div class="t-lists-main">
+	<ul class="t-lists clearfix">
+		<li ng-show="0 != applications.length" ng-repeat="application in applications | filter:search_input">
+			<div class="t-list clearfix">
+				<a class="t-icon">{{application.charAt(0)}}</a>
+				<div class="t-text">
+					<p>{{application}}</p>
+				</div>
+				<div class="t-buttons">
+					<a class="btn " ng-click="editApplication(application)">Edit</a>
+					<a class="btn on" ng-click="deleteApplication(application)">Delete</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="t-loading" id="loading">
+		<span></span>
+	</div>
+
+	<div class="t-no-records" id="no-records">
+		<p>nothing here</p>
+	</div>
+
+	<div class="t-pagination" ng-click="getMoreUsers()"><a class="fx-fs"><i class="ka-down"></i></a></div>
+</div>

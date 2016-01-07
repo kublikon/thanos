@@ -2,6 +2,8 @@ function historyCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 
 	var content = { id: $stateParams.id };
 
+	console.log(content);
+
 	check.user(false, function(){
 		storage.find('user', function(token){
 			
