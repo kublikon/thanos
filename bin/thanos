@@ -33,7 +33,7 @@ function help {
 	echo "where <command> is one of:";
 	echo "      -h, --help                    general help/usage of thanos";
 	echo "      -st, --setup                  sets up thanos (globally)";
-	echo "      -st -u, --setup -u            sets up thanos main user only (globally)";
+	echo "      -st -u, --setup -u            sets up thanos default user only (globally)";
 	echo "      -r, --run                     globally starts thanos project";
 	echo "      -r -c, --run -c               globally starts thanos and log to a file";
 	echo "      -s, --stop                    globally stops thanos project";

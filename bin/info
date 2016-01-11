@@ -40,13 +40,16 @@ else
 fi
 
 echo "To setup thanos use:   > thanos --setup";
-echo "For a local setup use: > thanos --setup <path/to/directory>";
+echo "For a local setup use: > thanos --setup -u";
+echo "";
+echo "Local setup will only configure your default user for Thanos. Your other configurations can be";
+echo "declared in .thanos.json on your root user directory. You can copy the config structure directly";
+echo "from thanos/config.json (config.json is overwritten by .thanos.json).";
 echo "";
 echo "After setup the default user is: un: admin@user.com, pw: thanos";
 echo "";
-echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 echo "For additional commands use: > thanos";
 
 echo "";
 echo "";
-echo ""; 
+echo "";
