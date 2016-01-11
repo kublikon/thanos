@@ -14,6 +14,15 @@ echo "   **    ** **  ** **  **   **   ****   ****  ";
 echo "----------------------------------------------";
 echo "";
 
+# Check location of global installation 
+
+if [ ! -d lib ]
+then
+	bin="/usr/local/bin";
+	lib="/usr/local/lib";
+	path="$lib/node_modules/thanos";
+fi
+
 # Detect if is installed globally - if not then move thanos bin to global space and update thanos-path
 
 if [[ $dir == $path ]]
@@ -40,4 +49,4 @@ echo "For additional commands use: > thanos";
 
 echo "";
 echo "";
-echo "";
+echo ""; 

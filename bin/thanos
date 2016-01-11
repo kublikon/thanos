@@ -1,16 +1,26 @@
 #!/bin/bash
 
-if [ -e "$HOME/.node/bin/thanos-path" ]
+# Check location of global installation 
+if [ -d "$HOME/.node/bin/" ]
+then
+	global="$HOME/.node";
+else 
+	global="/usr/local";
+fi
+
+# Detect if installed globally
+
+if [ -e "$global/bin/thanos-path" ]
 then
 	path="local";
 
-	lib="$(<$HOME/.node/bin/thanos-path)/..";
-	bin=$(<$HOME/.node/bin/thanos-path);
+	lib="$(<$global/bin/thanos-path)/..";
+	bin=$(<$global/bin/thanos-path);
 else 
 	path="global";
 
-	lib="$HOME/.node/lib/node_modules/thanos";
-	bin="$HOME/.node/lib/node_modules/thanos/bin";
+	lib="$global/lib/node_modules/thanos";
+	bin="$global/lib/node_modules/thanos/bin";
 fi
 
 param=$1;
