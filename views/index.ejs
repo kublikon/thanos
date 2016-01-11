@@ -24,10 +24,11 @@
 		<div class="t-menu">
 			<div class="t-menu-con">
 				<ul>
-					<li><a ng-click="to('stats')">stats</a></li>
-					<li><a ng-click="to('users')">users</a></li>
-					<li><a ng-click="to('applications')">applications</a></li>
+					<!-- <li><a ng-click="to('stats')">stats</a></li> -->
 					<li><a ng-click="to('deployments')">deployments</a></li>
+					<li><a ng-click="to('applications')">applications</a></li>
+					<li><a ng-click="to('users')">users</a></li>
+					<li><a ng-click="to('compare')">compare</a></li>
 					<li><a ng-click="to('settings')">settings</a></li>
 					<li><a ng-click="showLogin()" id="sign-in-btn">sign in</a></li>
 					<li id="device-log-out-btn"><a ng-click="logout()">Log out</a></li>
@@ -52,10 +53,11 @@
 					<input type="text" id="device-search" placeholder="search" ng-model="search_text" ng-keyup="search(search_text, $event)">
 				</div>
 				<ul>
-					<li class="main" ng-click="to('stats')" id="device-stats-btn">Stats</li>
-					<li ng-click="to('users')" id="device-users-btn">Users</li>
-					<li ng-click="to('applications')" id="device-applications-btn">Applications</a></li>
 					<li ng-click="to('deployments')" id="device-deployments-btn">Deployments</li>
+					<!-- <li class="main" ng-click="to('stats')" id="device-stats-btn">Stats</li> -->
+					<li ng-click="to('applications')" id="device-applications-btn">Applications</a></li>
+					<li ng-click="to('users')" id="device-users-btn">Users</li>
+					<li ng-click="to('compare')" id="device-compare-btn">Compare</li>
 					<li ng-click="to('settings')" id="device-settings-btn">Settings</li>
 					<li class="main" ng-click="showLogin()" id="device-sign-in-btn">Sign In</li>
 					<li ng-click="logout()" id="device-log-out-btn">Log out</li>

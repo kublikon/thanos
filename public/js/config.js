@@ -4,25 +4,25 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('stats', {
-                url: "/stats",
-                templateUrl: 'views/stats.html',
-                controller: 'statsCtrl'
-            })
-            .state('users', {
-                url: '/users',
-                templateUrl: 'views/users.html',
-                controller: 'usersCtrl'
+            .state('deployments', {
+                url: '/deployments',
+                templateUrl: 'views/deployments.html',
+                controller: 'deploymentsCtrl'
             })
             .state('applications', {
                 url: '/applications',
                 templateUrl: 'views/applications.html',
                 controller: 'applicationsCtrl'
             })
-            .state('deployments', {
-                url: '/deployments',
-                templateUrl: 'views/deployments.html',
-                controller: 'deploymentsCtrl'
+            .state('users', {
+                url: '/users',
+                templateUrl: 'views/users.html',
+                controller: 'usersCtrl'
+            })
+            .state('compare', {
+                url: '/compare',
+                templateUrl: 'views/compare.html',
+                controller: 'compareCtrl'
             })
             .state('deployments.history', {
                 url: '/:id',

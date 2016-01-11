@@ -49,7 +49,7 @@ function loginCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 					// transition
 					window.main.fx.hideLogin();
 
-					$location.path('stats');
+					$location.path('deployments');
 				}
 			});
 		}

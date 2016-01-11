@@ -1,0 +1,39 @@
+<!-- banner -->
+<div class="t-banner"></div>
+<!-- END banner -->
+
+<!-- search -->
+<div class="t-search">
+	<div class="t-search-bar fx-fs"></div>
+</div>
+<!-- END search -->
+
+<!-- compare -->
+<div class="t-settings-main">
+	<ul class="t-settings clearfix">
+		<li>
+			<p>Deployment ID</p>
+			<div class="t-setting">
+				<input type="text" placeholder="deployment id" id="deployment-id-1" ng-model="deployment_id_1">
+			</div>
+		</li>
+		<li>
+			<p>Deployment ID</p>
+			<div class="t-setting">
+				<input type="text" placeholder="deployment id" id="deployment-id-2" ng-model="deployment_id_2">
+				<button class="btn save" ng-click="compare()">compare</button>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- END compare -->
+
+<div class="t-compare clearfix">
+	<pre id="compare-1" class="t-code">
+		{{compare_1}}
+	</pre>
+	<div class="t-split"></div>
+	<pre id="compare-2" class="t-code">
+		{{compare_2}}
+	</pre>
+</div>

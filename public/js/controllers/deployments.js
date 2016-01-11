@@ -4,6 +4,10 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 	$scope.filter_sort = 'All';
 
+	service.get('api/deployment/debug/d-9RXRV9VBD', {}, function(data){
+		console.log(data);
+	});
+
 	check.user(false, function(){
 		storage.find('user', function(token){
 			
