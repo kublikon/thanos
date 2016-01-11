@@ -29,11 +29,22 @@
 <!-- END compare -->
 
 <div class="t-compare clearfix">
-	<pre id="compare-1" class="t-code">
-		{{compare_1}}
-	</pre>
-	<div class="t-split"></div>
-	<pre id="compare-2" class="t-code">
-		{{compare_2}}
-	</pre>
+	<div class="t-compare-con" id="compare">
+		<pre id="compare-1" class="t-code">
+			{{compare_1}}
+		</pre>
+		<div class="t-split"></div>
+		<pre id="compare-2" class="t-code">
+			{{compare_2}}
+		</pre>
+	</div>
+
+	<div class="t-loading hide" id="loading">
+		<span></span>
+	</div>
+
+	<div class="t-no-records" id="no-records">
+		<p>nothing here</p>
+	</div>
 </div>
+

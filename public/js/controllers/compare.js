@@ -12,6 +12,10 @@ function compareCtrl ($scope, $routeParams, $rootScope, $location, $http, servic
 	});
 
 	$scope.compare = function(){
+
+		$('#loading').show();
+		$('#compare').hide();
+
 		storage.find('user', function(token){
 			
 			var data = {
@@ -22,10 +26,19 @@ function compareCtrl ($scope, $routeParams, $rootScope, $location, $http, servic
 			};
 
 			service.get('api/deployments/compare', data, function(res){
+				if(res.error && res.error.code == 100){
+					$('#no-records').show();
+				} else {
+					$('#no-records').hide();
+					$('#compare').show();
+
+					$scope.compare_1 = JSON.stringify(res.compare_1, null, '    ');
+					$scope.compare_2 = JSON.stringify(res.compare_2, null, '    ');
+				}
+
 				console.log(res);
 
-				$scope.compare_1 = JSON.stringify(res.compare_1, null, '    ');
-				$scope.compare_2 = JSON.stringify(res.compare_2, null, '    ');
+				$('#loading').hide();
 			});
 		});	
 	};
