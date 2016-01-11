@@ -33,6 +33,7 @@ function help {
 	echo "where <command> is one of:";
 	echo "      -h, --help                    general help/usage of thanos";
 	echo "      -st, --setup                  sets up thanos (globally)";
+	echo "      -st -u, --setup -u            sets up thanos main user only (globally)";
 	echo "      -r, --run                     globally starts thanos project";
 	echo "      -r -c, --run -c               globally starts thanos and log to a file";
 	echo "      -s, --stop                    globally stops thanos project";
@@ -53,54 +54,71 @@ function setup {
 
 	cd $bin;
 
-	echo "8: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
+	if [[ $param_2 == '-u' ]]
+	then
+		echo "enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
 
-	read path;
-	db=`expr "$path" : '.*\(......\)'`;
+		read path;
+		db=`expr "$path" : '.*\(......\)'`;
 
-	echo "";
-	echo "7. enter random letter/number combination for salt - for encrypting sensitive information:";
+		import(){
+			mongoimport --upsert --db $db --collection users ../db/setup/users.json
+			mongoimport --upsert --db $db --collection auths ../db/setup/auths.json
+		}
 
-	read salt;
+		import;
 
-	echo "";
-	echo "6. enter AWS account id:";
+		node ./setup.js $path $salt $account $key $secret $bucket $region $domain $param_2
+	else
+		echo "8: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
 
-	read account;
+		read path;
+		db=`expr "$path" : '.*\(......\)'`;
 
-	echo "";
-	echo "5. enter AWS access key id:";
+		echo "";
+		echo "7. enter random letter/number combination for salt - for encrypting sensitive information:";
 
-	read key;
+		read salt;
 
-	echo "";
-	echo "4. enter AWS secret access key:";
+		echo "";
+		echo "6. enter AWS account id:";
 
-	read secret;
+		read account;
 
-	echo "";
-	echo "3. enter AWS bucket:";
+		echo "";
+		echo "5. enter AWS access key id:";
 
-	read bucket;
+		read key;
 
-	echo "";
-	echo "2. enter AWS region:";
+		echo "";
+		echo "4. enter AWS secret access key:";
 
-	read region;
+		read secret;
 
-	echo "";
-	echo "1. enter AWS domain:";
+		echo "";
+		echo "3. enter AWS bucket:";
 
-	read domain;
+		read bucket;
 
-	import(){
-		mongoimport --upsert --db $db --collection users ../db/setup/users.json
-		mongoimport --upsert --db $db --collection auths ../db/setup/auths.json
-	}
+		echo "";
+		echo "2. enter AWS region:";
 
-	import;
+		read region;
 
-	node ./setup.js $path $salt $account $key $secret $bucket $region $domain $param_2
+		echo "";
+		echo "1. enter AWS domain:";
+
+		read domain;
+
+		import(){
+			mongoimport --upsert --db $db --collection users ../db/setup/users.json
+			mongoimport --upsert --db $db --collection auths ../db/setup/auths.json
+		}
+
+		import;
+
+		node ./setup.js $path $salt $account $key $secret $bucket $region $domain $param_2
+	fi
 }
 
 function run {
