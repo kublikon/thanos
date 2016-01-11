@@ -35,7 +35,7 @@ else
 	echo "- local -";
 	echo "";
 
-	cp -f $dir/thanos $bin
+	cp -f $dir/bin/thanos $bin
 	echo $dir > $bin/thanos-path
 fi
 

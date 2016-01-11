@@ -14,8 +14,8 @@ if [ -e "$global/bin/thanos-path" ]
 then
 	path="local";
 
-	lib="$(<$global/bin/thanos-path)/..";
-	bin=$(<$global/bin/thanos-path);
+	lib=$(<$global/bin/thanos-path);
+	bin="$(<$global/bin/thanos-path)/bin";
 else 
 	path="global";
 
