@@ -17,6 +17,7 @@ The easiest way to setup Thanos is from [npm](https://www.npmjs.com/package/than
 a default user for Thanos.
 
 * `npm install -g thanos`
+* `thanos -st`
 
 
 > Please have your nodejs, mongodb installed and running.
@@ -24,11 +25,11 @@ a default user for Thanos.
 
 ### Development Setup
 For development we recommend that Thanos is not installed in a global space. To do this first clone the repo: `git clone https://github.com/kublikon/thanos.git` and then run the `npm install` command in the project space. Once
-Thanos is installed you can configure it by running `thanos -st` command from any terminal location.
+Thanos is installed you can configure the default user by running `thanos -st -u` command from any terminal location.
 
 * `git clone https://github.com/kublikon/thanos.git`
 * `npm install`
-* `thanos -st`
+* `thanos -st -u`
 
 
 > Please have your nodejs, mongodb installed and running.

@@ -139,9 +139,11 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					
 						res.created_at = date.toLocaleDateString('en-US') + ' - ' + date.toLocaleTimeString("en-US");
 
-						helper.findAndReplace('deployment', 'deployment_group_id', $scope, res);
+						helper.findAndReplace('deployment', 'deployment_internal_id', $scope, res);
 
 						clear();
+
+						console.log(res);
 					}
 				});
 			});

@@ -133,7 +133,7 @@
 				<a class="t-icon" ng-class="{ 'spin': deployment.is_started }" ng-click="openEditDeployment(deployment)">{{deployment.deployment_group.charAt(0)}}</a>
 				<div class="t-text">
 					<a ng-click="openEditDeployment(deployment)">{{deployment.deployment_group}}</a>
-					<p>{{deployment.revision_type}}@{{deployment.github_project_commit_id}}{{deployment.s3_project_key}}</p>
+					<p>{{deployment.revision_type}}<span>@{{deployment.github_project_commit_id}}{{deployment.s3_project_key}}</span></p>
 				</div>
 				<div class="t-buttons">
 					<a ng-class="{ 't-started': deployment.is_started, 't-deployed': deployment.is_deployed, 't-stopped': deployment.is_stopped }"></a>
