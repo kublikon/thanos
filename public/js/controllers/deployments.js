@@ -4,10 +4,6 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 	$scope.filter_sort = 'All';
 
-	service.get('api/deployment/debug/d-9RXRV9VBD', {}, function(data){
-		console.log(data);
-	});
-
 	check.user(false, function(){
 		storage.find('user', function(token){
 			
@@ -111,8 +107,8 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					access_token: token.access_token,
 					user: window.main.user._id,
 					group: $scope.group,
-					role: $scope.role.RoleName,
-					arn: $scope.role.Arn,
+					role: $scope.role,
+					arn: $scope.arn,
 					AMI: $scope.AMI,
 					application_name: $scope.application_name,
 					deployment_group: $scope.deployment_group,

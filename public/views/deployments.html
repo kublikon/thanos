@@ -13,8 +13,11 @@
 			<select id="AWS-groups" ng-model="group" ng-options="option_group.GroupId as option_group.GroupName for option_group in groups">
 				<option value="" selected="selected">- security groups -</option>
 			</select>
-			<select id="AWS-roles" ng-model="role" ng-options="option_role as option_role.RoleName for option_role in roles">
+			<select id="AWS-roles" ng-model="role" ng-options="option_role.RoleName as option_role.RoleName for option_role in roles">
 				<option value="" selected="selected">- roles -</option>
+			</select>
+			<select id="AWS-arn" ng-model="arn" ng-options="option_arn.Arn as option_arn.RoleName for option_arn in roles">
+				<option value="" selected="selected">- arn -</option>
 			</select>
 			<select id="AWS-AMIs" ng-model="AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
 				<option value="" selected="selected">- environment AMIs -</option>
@@ -70,8 +73,11 @@
 				<select id="AWS-groups" ng-model="edit.group" ng-options="option_group.GroupId as option_group.GroupName for option_group in groups">
 					<option value="" selected="selected">- security groups -</option>
 				</select>
-				<select id="AWS-roles" ng-model="edit.role" ng-options="option_role as option_role.RoleName for option_role in roles">
+				<select id="AWS-roles" ng-model="edit.role" ng-options="option_role.RoleName as option_role.RoleName for option_role in roles">
 					<option value="" selected="selected">- roles -</option>
+				</select>
+				<select id="AWS-arn" ng-model="edit.arn" ng-options="option_arn.Arn as option_arn.RoleName for option_arn in roles">
+					<option value="" selected="selected">- arn -</option>
 				</select>
 				<select id="AWS-AMIs" ng-model="edit.AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
 					<option value="" selected="selected">- environment AMIs -</option>
