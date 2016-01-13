@@ -43,7 +43,7 @@
 					<p ng-click="openEditApplication(application)">{{application}}</p>
 				</div>
 				<div class="t-buttons">
-					<a class="btn on" ng-click="delete(application)">Delete</a>
+					<a class="btn on" ui-sref="applications.delete({ id: application })">Delete</a>
 				</div>
 			</div>
 		</li>
@@ -59,3 +59,7 @@
 
 	<div class="t-pagination" ng-click="getMoreUsers()"><a class="fx-fs"><i class="ka-down"></i></a></div>
 </div>
+
+<!-- modal -->
+<div id="t-modal" ui-view="modal"></div>
+<!-- END modal -->

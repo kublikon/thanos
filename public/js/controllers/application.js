@@ -190,25 +190,6 @@ function applicationsCtrl ($scope, $routeParams, $rootScope, $location, $http, s
 		}
 	};
 
-	$scope.delete = function(application){
-		storage.find('user', function(token){
-
-			var data = {
-				access_token: token.access_token,
-				user: window.main.user._id,
-				application_name: application
-			}
-
-			service.post('api/application/remove', data, function(res){
-				if(res.error){
-					console.log(res);
-				} else {	
-					$scope.applications.splice($scope.applications.indexOf(application), 1);
-				}
-			});
-		});
-	};
-
 	$scope.cancel = function(){
 		clear();
 	};

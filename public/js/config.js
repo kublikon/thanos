@@ -9,10 +9,28 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'views/deployments.html',
                 controller: 'deploymentsCtrl'
             })
+            .state('deployments.history', {
+                url: '/:id',
+                views: { 
+                    'modal': { 
+                        controller: 'historyCtrl',
+                        templateUrl: 'views/modal-history.html'
+                    }
+                }
+            })
             .state('applications', {
                 url: '/applications',
                 templateUrl: 'views/applications.html',
                 controller: 'applicationsCtrl'
+            })
+            .state('applications.delete', {
+                url: '/:id',
+                views: { 
+                    'modal': { 
+                        controller: 'deleteCtrl',
+                        templateUrl: 'views/modal-delete.html'
+                    }
+                }
             })
             .state('users', {
                 url: '/users',
@@ -23,15 +41,6 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/compare',
                 templateUrl: 'views/compare.html',
                 controller: 'compareCtrl'
-            })
-            .state('deployments.history', {
-                url: '/:id',
-                views: { 
-                    'modal': { 
-                        controller: 'historyCtrl',
-                        templateUrl: 'views/modal-history.html'
-                    }
-              }
             })
             .state('settings', {
                 url: '/settings',

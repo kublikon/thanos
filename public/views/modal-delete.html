@@ -1,0 +1,20 @@
+<div class="t-modal">
+	<div class="t-modal-con">
+
+		<div class="t-head">
+			<p>Delete {{name}}</p>
+			<span class="ka-close t-close fx-fs" ng-click="close()"></span>
+		</div>
+
+		<div class="t-confirm">
+			<p>
+				By removing the application you will also remove all of the deployments associated with {{name}} application.
+				Once removed all instances associated will go down.
+			</p>
+			<p>Type the name of the application to confirm</p>
+			<input type="text" placeholder="application name" ng-model="application_name" ng-keyup="verify()">
+			<button class="btn save off" id="delete" ng-click="delete()" disabled>I understand, delete</button>
+		</div>
+
+	</div>
+</div>
