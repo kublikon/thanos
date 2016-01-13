@@ -1,4 +1,4 @@
-app.factory('helper', function($rootScope, $http, $location, service){
+app.factory('helper', function($rootScope, $http, $location, service, utils){
 	return {
 		filter: function(type, $scope, content, filter, filter_type, cb){
 			if(filter_type == 'type'){
@@ -75,10 +75,18 @@ app.factory('helper', function($rootScope, $http, $location, service){
 			var is_found = false;
 			
 			scope[type + 's'].safeForEach(function(item, index){
-				if(item[on] == data[on]){
-					scope[type + 's'][index] = item;
+				if(on){
+					if(item[on] == data[on]){
+						scope[type + 's'][index] = item;
 
-					is_found = true;
+						is_found = true;
+					}
+				} else {
+					if(item == data){
+						scope[type + 's'][index] = item;
+
+						is_found = true;
+					}
 				}
 			});
 
