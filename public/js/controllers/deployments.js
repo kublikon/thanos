@@ -112,6 +112,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					AMI: $scope.AMI,
 					application_name: $scope.application_name,
 					deployment_group: $scope.deployment_group,
+					instance_type: $scope.instance_type,
 					node_modules: $scope.node_modules,
 					revision_type: $scope.revision_type,
 					github_project_commit_id: $scope.github_project_commit_id,

@@ -22,6 +22,14 @@
 			<select id="AWS-AMIs" ng-model="AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
 				<option value="" selected="selected">- environment AMIs -</option>
 			</select>
+			<select id="AWS-instance-type" ng-model="instance_type">
+				<option value="" selected="selected">- instance type -</option>
+				<option value="t1.micro" selected="selected">t1.micro</option>
+				<option value="m3.medium" selected="selected">m3.medium</option>
+				<option value="m3.large" selected="selected">m3.large</option>
+				<option value="m3.xlarge" selected="selected">m3.xlarge</option>
+				<option value="m3.2xlarge" selected="selected">m3.2xlarge</option>
+			</select>
 			<select id="node-modules" ng-model="node_modules">
 				<option value="" selected="selected">- node modules -</option>
 				<option value="install">install</option>
@@ -81,6 +89,14 @@
 				</select>
 				<select id="AWS-AMIs" ng-model="edit.AMI" ng-options="option_AMI.ImageId as option_AMI.Name for option_AMI in AMIs">
 					<option value="" selected="selected">- environment AMIs -</option>
+				</select>
+				<select id="AWS-instance-type" ng-model="edit.instance_type">
+					<option value="" selected="selected">- instance type -</option>
+					<option value="t1.micro" selected="selected">t1.micro</option>
+					<option value="m3.medium" selected="selected">m3.medium</option>
+					<option value="m3.large" selected="selected">m3.large</option>
+					<option value="m3.xlarge" selected="selected">m3.xlarge</option>
+					<option value="m3.2xlarge" selected="selected">m3.2xlarge</option>
 				</select>
 				<select id="edit-node-modules" ng-model="edit.node_modules">
 					<option value="" selected="selected">- node modules -</option>
