@@ -175,7 +175,6 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					github_project_commit_id: $scope.edit.github_project_commit_id,
 					github_project_path: $scope.edit.github_project_path,
 					s3_project_path: $scope.edit.s3_project_path,
-					// tag_version: $scope.edit.tag_version,
 					description: $scope.edit.description
 				}
 

@@ -20,6 +20,9 @@ function deleteCtrl ($scope, $stateParams, $rootScope, $location, $http, service
 
 	$scope.delete = function(){
 		if($scope.application_name == content.id){
+
+			$('#delete').prop('disabled', true);
+
 			storage.find('user', function(token){
 
 				var data = {

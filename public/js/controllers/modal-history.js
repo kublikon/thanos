@@ -20,6 +20,7 @@ function historyCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 				});
 
 				$scope.name = data.deployments[0].deployment_group;
+				$scope.deployment_count = data.deployment_count;
 
 				helper.bind('deployment', $scope, data, undefined, undefined, true);
 			});
@@ -29,6 +30,7 @@ function historyCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 	$scope.openEditDeployment = function(deployment){
 
 		$scope.$parent.edit = deployment;
+		$scope.$parent.edit.deployment_count = $scope.deployment_count;
 		
 		$location.path('/deployments');
 
