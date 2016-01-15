@@ -7,7 +7,7 @@ app.factory('utils', function($rootScope, $http, $location, service){
 						return cb(item, index);
 					});
 				} else {
-					console.error('empty array');
+					console.warn('empty array');
 				}
 			} else {
 				console.error('not an array');

@@ -18,6 +18,15 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
                     }
                 }
             })
+            .state('deployments.delete', {
+                url: '/:name/:application/:id',
+                views: { 
+                    'modal': { 
+                        controller: 'deleteDeploymentCtrl',
+                        templateUrl: 'views/modal-delete-deployment.html'
+                    }
+                }
+            })
             .state('applications', {
                 url: '/applications',
                 templateUrl: 'views/applications.html',

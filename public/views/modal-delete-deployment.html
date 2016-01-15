@@ -1,0 +1,20 @@
+<div class="t-modal">
+	<div class="t-modal-con">
+
+		<div class="t-head">
+			<p>Delete {{name}}</p>
+			<span class="ka-close t-close fx-fs" ng-click="close()"></span>
+		</div>
+
+		<div class="t-confirm">
+			<p>
+				Removing this deployment will also remove any launch configuration, load balancer, auto scaling group and deployment 
+				group associated with this deployment as well as all of the history.
+			</p>
+			<p>Type the name of the deployment to confirm</p>
+			<input type="text" placeholder="deployment name" ng-model="deployment_group" ng-keyup="verify()">
+			<button class="btn save off" id="delete" ng-click="delete()" disabled>I understand, delete</button>
+		</div>
+
+	</div>
+</div>

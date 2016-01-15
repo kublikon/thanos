@@ -145,7 +145,8 @@
 					<a ng-class="{ 't-started': deployment.is_started, 't-deployed': deployment.is_deployed, 't-stopped': deployment.is_stopped }"></a>
 
 					<a class="btn" ng-click="showHistory(deployment)" ui-sref="deployments.history({ id: deployment.application_name + '-' + deployment.deployment_group })">History</a>
-					<a class="btn" ng-show="{{!deployment.is_deployed || !deployment.is_stopped}}" ng-click="stop(deployment)">Stop</a>
+					<a class="btn" ng-hide="{{deployment.is_deployed || deployment.is_stopped}}" ng-click="stop(deployment)">Stop</a>
+					<a class="btn on" ng-show="{{deployment.is_deployed || deployment.is_stopped}}" ui-sref="deployments.delete({ name: deployment.deployment_group, application: deployment.application_name, id: deployment.deployment_internal_id })">Delete</a>
 				</div>
 			</div>
 		</li>
