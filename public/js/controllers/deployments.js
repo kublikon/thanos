@@ -151,15 +151,14 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 
 	$scope.update = function(){
 
-		$('#save').prop('disabled', true);
+		$('#update').prop('disabled', true);
 
 		var pass = 0;
 
-		// pass += service.validate($scope.edit.deployment_group, 'edit-deployment-group', 'text', pass);
-		// pass += service.validate($scope.edit.node_modules, 'edit-node-modules', 'select', pass);
-		// pass += service.validate($scope.edit.revision_type, 'edit-revision-type', 'select', pass);
-		// pass += service.validate($scope.edit.tag_version, 'edit-tag-version', 'text', pass);
-		// pass += service.validate($scope.edit.description, 'edit-description', 'textarea', pass);
+		pass += service.validate($scope.edit.deployment_group, 'edit-deployment-group', 'text', pass);
+		pass += service.validate($scope.edit.node_modules, 'edit-node-modules', 'select', pass);
+		pass += service.validate($scope.edit.revision_type, 'edit-revision-type', 'select', pass);
+		pass += service.validate($scope.edit.description, 'edit-description', 'textarea', pass);
 
 		if(pass == 0){
 			storage.find('user', function(token){
@@ -167,24 +166,29 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				var data = {
 					access_token: token.access_token,
 					user: window.main.user._id,
-					role: $scope.selected_role,
-					AMI: $scope.selected_AMI,
+					group: $scope.edit.group,
+					role: $scope.edit.role,
+					arn: $scope.edit.arn,
+					AMI: $scope.edit.AMI,
 					application_name: $scope.edit.application_name,
 					deployment_group: $scope.edit.deployment_group,
+					instance_type: $scope.edit.instance_type,
 					node_modules: $scope.edit.node_modules,
 					revision_type: $scope.edit.revision_type,
 					github_project_commit_id: $scope.edit.github_project_commit_id,
 					github_project_path: $scope.edit.github_project_path,
-					s3_project_path: $scope.edit.s3_project_path,
+					s3_project_bucket: $scope.edit.s3_project_bucket,
+					s3_project_key: $scope.edit.s3_project_key,
+					s3_project_bundle_type: $scope.edit.s3_project_bundle_type,
 					description: $scope.edit.description
 				}
 
-				service.post('api/deployment', data, function(res){
+				service.post('api/deployment/redeploy', data, function(res){
 					if(res.error){
 						console.log(res);
-						$('#save').prop('disabled', false);
+						$('#update').prop('disabled', false);
 					} else {
-						$('#save').prop('disabled', false);
+						$('#update').prop('disabled', false);
 						$('#edit-deployment').slideUp();
 						$('#no-records').hide();
 
@@ -199,7 +203,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 				});
 			});
 		} else { 
-			$('#save').prop('disabled', false);
+			$('#update').prop('disabled', false);
 		}
 	};
 
