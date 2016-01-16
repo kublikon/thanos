@@ -10,7 +10,7 @@ Project deployment tool for Nodejs and AWS.
 * `npm` - `v2.14.7` or higher
 * `mongodb` - `v2.6.5` or higher
 * `AWS account` with Amazon
-* `Github Account` for AWS Deployment Authentication
+* `GitHub account` for deployment directly from GitHub
 
 
 ### General Local/Server Setup
