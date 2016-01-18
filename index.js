@@ -14,6 +14,8 @@
         bootstrap = require('kuba-bootstrap'),
         bootstrapPath = path.join(__dirname, 'node_modules', 'kuba-bootstrap'),
         aws = require('aws-sdk'),
+
+        checkS3 = require('./lib/check-s3'),
         
         auth = require('./lib/services/auth'),
         user = require('./lib/services/user'),
@@ -42,6 +44,7 @@
             }
         }
     }));
+    
     app.use(express.static(__dirname + '/public'));
         
     aws.config.update({ 
@@ -116,6 +119,9 @@
             });
         };
     };
+
+    // check thanos S3 bucket
+    checkS3(app);
 
     // services
     auth(app);

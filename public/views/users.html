@@ -24,7 +24,7 @@
 		<li ng-show="0 != users.length" ng-repeat="user in users | filter:search_input">
 			<div class="t-list clearfix">
 				<a ng-click="openUser(user.username_public)">
-					<img class="fx-fs" ng-src="{{user.profile_m}}" imageload>
+					<img class="fx-fs" ng-src="{{user.profile_s}}" imageload>
 				</a>
 				<div class="t-text">
 					<a ng-click="openUser(user.username_public)">{{user.full_name}}</a>

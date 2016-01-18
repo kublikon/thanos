@@ -16,6 +16,8 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 
 	function bind(data){
 		$scope.settings = data.settings;
+		$scope.splash = {};
+		$scope.splash.data = data.settings.profile_s;
 	};
 
 	$scope.selectImage = function(file){

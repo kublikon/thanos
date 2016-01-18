@@ -24,8 +24,7 @@
 		data.aws_secret_access_key = process.argv[6],
 		data.aws_bucket = process.argv[7],
 		data.aws_region = process.argv[8],
-		data.aws_s3_domain = process.argv[9],
-		data.path_to_project = process.argv[10],
+		data.path_to_project = process.argv[9],
 
 		fs.writeFileSync('../config.json', JSON.stringify(data), 'utf-8');
 

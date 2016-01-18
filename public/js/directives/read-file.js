@@ -1,6 +1,6 @@
 window.app.directive("readfile", [function () {
     return {
-        restrict: 'E',
+        // restrict: 'E',
         scope: {
             readfile: "="
         },
@@ -8,13 +8,13 @@ window.app.directive("readfile", [function () {
             element.bind("change", function (changeEvent) {
                 var reader = new FileReader();
 
-                console.log('scope.readfile', scope.readfile);
+                // console.log('scope.readfile', scope.readfile);
 
                 reader.onload = function (loadEvent) {
                     scope.$apply(function () {
                         scope.readfile = { data: loadEvent.target.result, name: changeEvent.target.files[0].name, size: changeEvent.target.files[0].size, extension: changeEvent.target.files[0].name.split('.').pop() };
                     
-                        console.log('scope.readfile', scope.readfile);
+                        // console.log('scope.readfile', scope.readfile);
                         // var baseImg = $('#' + image)[0],
                         //     res = {},
                         //     canvas, context;

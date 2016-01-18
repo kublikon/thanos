@@ -9,11 +9,9 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 	});
 
 	function bind(data){
-		console.log(data);
-
 		$scope.profile = data.profile;
 		$scope.splash = {};
-		$scope.splash.data = data.profile.profile_m;
+		$scope.splash.data = data.profile.profile_s;
 	};
 
 	$scope.selectImage = function(file){
@@ -36,13 +34,13 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 					user: profile
 				};
 
-				// if($scope.splash){
-				// 	data.profile_s = image.convertImage('splash', $scope.splash, 120);
-				// 	data.profile_m = image.convertImage('splash', $scope.splash, 300);
-				// 	data.profile_l = image.convertImage('splash', $scope.splash, 600);
-				// }
+				if($scope.splash){
+					data.profile_s = image.convertImage('splash', $scope.splash, 120);
+					data.profile_m = image.convertImage('splash', $scope.splash, 300);
+					data.profile_l = image.convertImage('splash', $scope.splash, 600);
+				}
 
-				console.log(profile);
+				console.log(data);
 
 				service.post('api/user/update', data, function(res){
 					if(res.error){

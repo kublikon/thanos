@@ -68,47 +68,42 @@ function setup {
 
 		import;
 
-		node ./setup.js $path $salt $account $key $secret $bucket $region $domain $param_2
+		node ./setup.js $path $salt $account $key $secret $bucket $region $param_2
 	else
-		echo "8: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
+		echo "7: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
 
 		read path;
 		db=`expr "$path" : '.*\(......\)'`;
 
 		echo "";
-		echo "7. enter random letter/number combination for salt - for encrypting sensitive information:";
+		echo "6. enter random letter/number combination for salt - for encrypting sensitive information:";
 
 		read salt;
 
 		echo "";
-		echo "6. enter AWS account id:";
+		echo "5. enter AWS account id:";
 
 		read account;
 
 		echo "";
-		echo "5. enter AWS access key id:";
+		echo "4. enter AWS access key id:";
 
 		read key;
 
 		echo "";
-		echo "4. enter AWS secret access key:";
+		echo "3. enter AWS secret access key:";
 
 		read secret;
 
 		echo "";
-		echo "3. enter AWS bucket:";
+		echo "2. enter AWS bucket:";
 
 		read bucket;
 
 		echo "";
-		echo "2. enter AWS region:";
+		echo "1. enter AWS region:";
 
 		read region;
-
-		echo "";
-		echo "1. enter AWS domain:";
-
-		read domain;
 
 		import(){
 			mongoimport --upsert --db $db --collection users ../db/setup/users.json
@@ -117,7 +112,7 @@ function setup {
 
 		import;
 
-		node ./setup.js $path $salt $account $key $secret $bucket $region $domain $param_2
+		node ./setup.js $path $salt $account $key $secret $bucket $region $param_2
 	fi
 }
 
