@@ -1,7 +1,7 @@
 {
     "name": "thanos",
     "private": false,
-    "version": "0.0.32",
+    "version": "0.0.33",
     "description": "Project deployment tool",
     "repository": {
         "url":"https://github.com/kublikon/thanos.git",
