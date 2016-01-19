@@ -60,6 +60,8 @@
                 "apiVersions": { "s3": '2006-03-01' }
             });
 
+            config.settings = data;
+
             app.s3 = new aws.S3();
             app.iam = new aws.IAM({apiVersion: '2010-05-08'}),
             app.ec2 = new aws.EC2({apiVersion: '2015-10-01', region: 'us-east-1'}),
