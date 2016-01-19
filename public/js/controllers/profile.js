@@ -24,8 +24,8 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 
 		var pass = 0;
 
-		pass += service.validate($scope.profile.first_name, 'first-name', 'img', pass);
-		pass += service.validate($scope.profile.last_name, 'last-name', 'img', pass);
+		pass += service.validate($scope.profile.first_name, 'first-name', 'text', pass);
+		pass += service.validate($scope.profile.last_name, 'last-name', 'text', pass);
 
 		if(pass == 0){
 			storage.find('user', function(token){
@@ -34,13 +34,11 @@ function profileCtrl ($scope, $stateParams, $rootScope, $location, $http, servic
 					user: profile
 				};
 
-				if($scope.splash){
+				if($scope.splash.name){
 					data.profile_s = image.convertImage('splash', $scope.splash, 120);
 					data.profile_m = image.convertImage('splash', $scope.splash, 300);
 					data.profile_l = image.convertImage('splash', $scope.splash, 600);
 				}
-
-				console.log(data);
 
 				service.post('api/user/update', data, function(res){
 					if(res.error){

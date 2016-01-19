@@ -36,8 +36,6 @@ function compareCtrl ($scope, $routeParams, $rootScope, $location, $http, servic
 					$scope.compare_2 = JSON.stringify(res.compare_2, null, '    ');
 				}
 
-				console.log(res);
-
 				$('#loading').hide();
 			});
 		});	

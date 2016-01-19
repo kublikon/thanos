@@ -1,1 +1,1 @@
-{ "_id" : { "$oid": "566b2fe9a9fcd0fb07b5be6d" }, "username" : "admin@user.com", "password" : "", "is_active" : true, "__v" : 0 }
+{ "_id" : { "$oid": "566b2fe9a9fcd0fb07b5be6d" }, "username" : "admin@user.com", "password" : "", "is_active" : true, "account_type": "admin", "__v" : 0 }

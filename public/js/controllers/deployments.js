@@ -11,9 +11,6 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 			content.user_id = token.id;
 
 			service.get('api/deployments', content, function(data){
-
-				console.log(data);
-
 				data.deployments.safeForEach(function(deployment, index){
 					var date = new Date(deployment.created_at);
 					
@@ -139,8 +136,6 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 						helper.findAndReplace('deployment', 'deployment_internal_id', $scope, res);
 
 						clear();
-
-						console.log(res);
 					}
 				});
 			});

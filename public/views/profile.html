@@ -38,11 +38,11 @@
 					<option value="true">active</option>
 					<option value="false">deactivated</option>
 				</select>
-				<select ng-model="profile.account_type">
+				<select ng-model="profile.auth.account_type">
 					<option value="" selected="selected">- account type -</option>
-					<option value="true">admin</option>
-					<option value="false">developer</option>
-					<option value="false">support</option>
+					<option value="admin">admin</option>
+					<option value="developer">developer</option>
+					<option value="support">support</option>
 				</select>
 				<button class="btn save" id="save" ng-click="save(profile, splash)">update</button>
 			</div>

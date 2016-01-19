@@ -49,7 +49,7 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 					github_password: settings.github_password
 				};
 
-				if($scope.splash){
+				if($scope.splash.name){
 					data.profile_s = image.convertImage('splash', $scope.splash, 120);
 					data.profile_m = image.convertImage('splash', $scope.splash, 300);
 					data.profile_l = image.convertImage('splash', $scope.splash, 600);
@@ -61,8 +61,6 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 					} else if (res.profile) {
 						$rootScope.user.profile_m = res.splash;
 					} else {
-						console.log(res);
-
 						$rootScope.company = window.main.company = res;
 					}
 					$('#save').prop('disabled', false);
