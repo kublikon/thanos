@@ -145,7 +145,15 @@ function stop {
 }
 
 function version {
-	npm info thanos version
+	cd $lib;
+
+	package_version=$(cat package.json \
+		| grep version \
+		| head -1 \
+		| awk -F: '{ print $2 }' \
+		| sed 's/[",]//g')
+
+	echo $package_version
 }
 
 case "$param" in
