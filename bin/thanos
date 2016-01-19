@@ -37,6 +37,7 @@ function help {
 	echo "      -r, --run                     globally starts thanos project";
 	echo "      -r -c, --run -c               globally starts thanos and log to a file";
 	echo "      -s, --stop                    globally stops thanos project";
+	echo "      -v, --version                 thanos version";
 	echo "";
 	echo "You don't have to setup thanos if you already have .thanos.json in your root user directory.";
 	echo "";
@@ -143,6 +144,10 @@ function stop {
 	pkill node
 }
 
+function version {
+	npm info thanos version
+}
+
 case "$param" in
 	"")
 		help;
@@ -170,6 +175,12 @@ case "$param" in
 	;;
 	--stop)
 		stop;
+	;;
+	-v)
+		version;
+	;;
+	--version)
+		version;
 	;;
     *)
     	help;
