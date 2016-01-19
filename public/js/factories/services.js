@@ -7,6 +7,8 @@ app.factory('service', function($rootScope, $http, $location, logout){
 			.success(function(ret){
 				if(ret.error && ret.error.code == 403){
 					logout.go();
+				} else if(ret.error && ret.error.code == 405){
+					$location.path('/deployments');
 				} else {
 					cb(ret);
 				}
@@ -20,6 +22,9 @@ app.factory('service', function($rootScope, $http, $location, logout){
 			.success(function(ret){
 				if(ret.error && ret.error.code == 403){
 					logout.go();
+				} else if(ret.error && ret.error.code == 405){
+					// display modal
+					console.log(ret.error);
 				} else {
 					cb(ret);
 				}

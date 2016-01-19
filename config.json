@@ -5,14 +5,6 @@
 	"salt": "",
 	"title": "Thanos",
 
-	"aws_account_id": "",
-	"aws_access_key_id": "",
-	"aws_secret_access_key": "",
-	"aws_bucket": "",
-	"aws_region": "",
-	"aws_logging": false,
-	"aws_s3_domain" : "",
-
 	"default_profile_m_s": "/img/avatars/profile_m_s.png",
 	"default_profile_m_m": "/img/avatars/profile_m_m.png",
 	"default_profile_m_l": "/img/avatars/profile_m_l.png",

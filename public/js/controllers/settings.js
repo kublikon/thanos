@@ -42,9 +42,9 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 					aws_account_id: settings.aws_account_id,
 					aws_access_key_id: settings.aws_access_key_id,
 					aws_secret_access_key: settings.aws_secret_access_key,
+					aws_bucket: settings.aws_bucket,
 					aws_region: settings.aws_region,
 					aws_logging: settings.aws_logging,
-					aws_s3_domain: settings.aws_s3_domain,
 					github_username: settings.github_username,
 					github_password: settings.github_password
 				};

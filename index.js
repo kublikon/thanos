@@ -14,6 +14,7 @@
         bootstrap = require('kuba-bootstrap'),
         bootstrapPath = path.join(__dirname, 'node_modules', 'kuba-bootstrap'),
         aws = require('aws-sdk'),
+        db = require('./lib/database'),
 
         checkS3 = require('./lib/check-s3'),
         
@@ -44,17 +45,32 @@
             }
         }
     }));
-    
+
     app.use(express.static(__dirname + '/public'));
         
-    aws.config.update({ 
-        "accessKeyId": config.aws_access_key_id,
-        "secretAccessKey": config.aws_secret_access_key,
-        "region": config.aws_region || "us-west-1",
-        "apiVersions": { "s3": '2006-03-01' }
-    });
+    db.setting.findOne({ setting_id: 1 })
+    .exec(function(err, data){
+        if(err){
+            log('e', 'unable to configure AWS');
+        } else {
+            aws.config.update({ 
+                "accessKeyId": data.aws_access_key_id,
+                "secretAccessKey": data.aws_secret_access_key,
+                "region": data.aws_region,
+                "apiVersions": { "s3": '2006-03-01' }
+            });
 
-    app.s3 = new aws.S3();
+            app.s3 = new aws.S3();
+            app.iam = new aws.IAM({apiVersion: '2010-05-08'}),
+            app.ec2 = new aws.EC2({apiVersion: '2015-10-01', region: 'us-east-1'}),
+            app.codeDeploy = new aws.CodeDeploy({apiVersion: '2014-10-06', region: 'us-east-1'}),
+            app.autoScaling = new aws.AutoScaling({apiVersion: '2011-01-01', region: 'us-east-1'}),
+            app.elb = new aws.ELB({apiVersion: '2012-06-01', region: 'us-east-1'});
+
+            // check thanos S3 bucket
+            checkS3(app);
+        }
+    });
 
     function loadAssetList(res){
 
@@ -119,9 +135,6 @@
             });
         };
     };
-
-    // check thanos S3 bucket
-    checkS3(app);
 
     // services
     auth(app);
