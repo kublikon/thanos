@@ -117,6 +117,7 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					s3_project_bucket: $scope.s3_project_bucket,
 					s3_project_key: $scope.s3_project_key,
 					s3_project_bundle_type: $scope.s3_project_bundle_type,
+					user_data: $scope.user_data,
 					description: $scope.description
 				}
 
