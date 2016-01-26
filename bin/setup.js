@@ -17,8 +17,9 @@
 	if(process.argv[3] != '-u'){
 		data = JSON.parse(data);
 
-		data.mongo_path = process.argv[2];
-		data.salt = process.argv[3];
+		data.port = process.argv[2];
+		data.mongo_path = process.argv[3];
+		data.salt = process.argv[4];
 
 		fs.writeFileSync('../config.json', JSON.stringify(data), 'utf-8');
 
@@ -29,12 +30,12 @@
 
     var update = {
 		setting_id: 1,
-		aws_account_id: process.argv[4],
-		aws_access_key_id: process.argv[5],
-		aws_secret_access_key: process.argv[6],
-		aws_bucket: process.argv[7],
-		aws_region: process.argv[8],
-		aws_s3_domain: 'https://' + process.argv[7] + '.s3.amazonaws.com',
+		aws_account_id: process.argv[5],
+		aws_access_key_id: process.argv[6],
+		aws_secret_access_key: process.argv[7],
+		aws_bucket: process.argv[8],
+		aws_region: process.argv[9],
+		aws_s3_domain: 'https://' + process.argv[8] + '.s3.amazonaws.com',
 		created_at: new Date()
 	}
 	db.setting.findOneAndUpdate({ setting_id: 1 }, update, { upsert: true, new: true }, function(err, data){

@@ -35,7 +35,7 @@ function help {
 	echo "      -st, --setup                  sets up thanos (globally)";
 	echo "      -st -u, --setup -u            sets up thanos default user only (globally)";
 	echo "      -r, --run                     globally starts thanos project";
-	echo "      -r -c, --run -c               globally starts thanos and log to a file";
+	echo "      -r -l, --run -l               globally starts thanos and log to a file";
 	echo "      -s, --stop                    globally stops thanos project";
 	echo "      -v, --version                 thanos version";
 	echo "";
@@ -71,6 +71,11 @@ function setup {
 
 		node ./setup.js $path $salt $account $key $secret $bucket $region $param_2
 	else
+		echo "8: enter port for thanos:";
+
+		read port;
+
+		echo "";
 		echo "7: enter path to mongodb - including any credentials (ex: mongodb://localhost/thanos - for thanos data storage):";
 
 		read path;
@@ -113,7 +118,7 @@ function setup {
 
 		import;
 
-		node ./setup.js $path $salt $account $key $secret $bucket $region $param_2
+		node ./setup.js $port $path $salt $account $key $secret $bucket $region $param_2
 	fi
 }
 
@@ -129,6 +134,8 @@ function run {
 	if [[ $param_2 ]]
 	then
 		exec node ./index.js . >> ./logs/thanos.log 2>&1 &
+
+		nohup echo '';
 	else 
 		node ./index.js
 	fi
