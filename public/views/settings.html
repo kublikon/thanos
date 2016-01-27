@@ -48,9 +48,16 @@
 			</div>
 		</li>
 		<li>
-			<p>AWS Preferences</p>
+			<p>AWS Default Preferences</p>
 			<div class="t-setting">
-				<input type="text" placeholder="aws region" id="aws-region" ng-model="settings.aws_region">
+				<input type="text" placeholder="device name" id="device-name" ng-model="settings.device_name">
+				<input type="text" placeholder="snapshot id" id="snapshot-id" ng-model="settings.snapshot_id">
+				<input type="text" placeholder="volume type" id="volume-type" ng-model="settings.volume_type">
+
+				<input type="text" placeholder="min size" id="min-size" ng-model="settings.min_size">
+				<input type="text" placeholder="max size" id="max-size" ng-model="settings.max_size">
+				<input type="text" placeholder="desired capacity" id="desired-capacity" ng-model="settings.desired_capacity">
+
 				<button class="btn save" id="save" ng-click="save(settings, splash)">update</button>
 			</div>
 		</li>

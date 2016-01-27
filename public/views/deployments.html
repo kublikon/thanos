@@ -54,7 +54,18 @@
 
 			<textarea rows="3" id="user-data" placeholder="Instance user data" ng-model="user_data"></textarea>
 			<textarea rows="3" id="description" placeholder="write a description..." ng-model="description" maxlength="100"></textarea>
+
+			<div class="hide" id="advanced-settings-save">
+				<input type="text" placeholder="device name" id="device-name" ng-model="settings.device_name">
+				<input type="text" placeholder="snapshot id" id="snapshot-id" ng-model="settings.snapshot_id">
+				<input type="text" placeholder="volume type" id="volume-type" ng-model="settings.volume_type">
+				<input type="text" placeholder="min size" id="min-size" ng-model="settings.min_size">
+				<input type="text" placeholder="max size" id="max-size" ng-model="settings.max_size">
+				<input type="text" placeholder="desired capacity" id="desired-capacity" ng-model="settings.desired_capacity">
+			</div>
+
 			<button class="btn save" id="save" ng-click="save()">deploy</button>
+			<button class="btn" id="advanced-save" ng-click="openAdvanced('save')">advanced</button>
 			<button class="btn" ng-click="cancel()">cancel</button>
 		</div>
 	</div>
@@ -122,7 +133,18 @@
 				</select>
 
 				<textarea rows="3" id="edit-description" placeholder="write a description..." ng-model="edit.description" maxlength="100"></textarea>
+
+				<div class="hide" id="advanced-settings-update">
+					<input type="text" placeholder="device name" id="device-name" ng-model="edit.device_name">
+					<input type="text" placeholder="snapshot id" id="snapshot-id" ng-model="edit.snapshot_id">
+					<input type="text" placeholder="volume type" id="volume-type" ng-model="edit.volume_type">
+					<input type="text" placeholder="min size" id="min-size" ng-model="edit.min_size">
+					<input type="text" placeholder="max size" id="max-size" ng-model="edit.max_size">
+					<input type="text" placeholder="desired capacity" id="desired-capacity" ng-model="edit.desired_capacity">
+				</div>
+
 				<button class="btn save" id="update" ng-click="update()">re-deploy</button>
+				<button class="btn" id="advanced-update" ng-click="openAdvanced('update')">advanced</button>
 				<button class="btn" ng-click="cancel()">cancel</button>
 			</div>
 		</li>

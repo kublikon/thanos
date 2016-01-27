@@ -46,7 +46,14 @@ function settingsCtrl ($scope, $routeParams, $rootScope, $location, $http, servi
 					aws_region: settings.aws_region,
 					aws_logging: settings.aws_logging,
 					github_username: settings.github_username,
-					github_password: settings.github_password
+					github_password: settings.github_password,
+
+					device_name: settings.device_name,
+					snapshot_id: settings.snapshot_id,
+					volume_type: settings.volume_type,
+					min_size: settings.min_size,
+					max_size: settings.max_size,
+					desired_capacity: settings.desired_capacity
 				};
 
 				if($scope.splash.name){

@@ -30,6 +30,12 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		$('#new-deployment').slideUp();
 		$('#edit-deployment').slideUp();
 
+		$('#advanced-settings-save').slideUp();
+		$('#advanced-settings-update').slideUp();
+
+		$('#advanced-save').removeClass('save');
+		$('#advanced-update').removeClass('save');
+
 		$scope.application_name = '';
 		$scope.deployment_group = '';
 		$scope.selected_group = '';
@@ -53,6 +59,18 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 		$('#edit-deployment').slideUp();
 		$('#new-deployment').slideDown();
 		$('html, body, .t-main').animate({ scrollTop: 0 }, 'fast');
+	};
+
+	$scope.openAdvanced = function(type){
+		var button = $('#advanced-' + type);
+
+		if(button.hasClass('save')){
+			$('#advanced-settings-' + type).slideUp();
+			$('#advanced-' + type).removeClass('save');
+		} else {
+			$('#advanced-settings-' + type).slideDown();
+			$('#advanced-' + type).addClass('save');
+		}
 	};
 
 	$scope.openEditDeployment = function(deployment){
@@ -118,7 +136,15 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					s3_project_key: $scope.s3_project_key,
 					s3_project_bundle_type: $scope.s3_project_bundle_type,
 					user_data: $scope.user_data,
-					description: $scope.description
+					description: $scope.description,
+
+					// advanced settings
+					device_name: $scope.settings.device_name,
+					snapshot_id: $scope.settings.snapshot_id,
+					volume_type: $scope.settings.volume_type,
+					min_size: $scope.settings.min_size,
+					max_size: $scope.settings.max_size,
+					desired_capacity: $scope.settings.desired_capacity
 				}
 
 				service.post('api/deployment', data, function(res){
@@ -176,7 +202,15 @@ function deploymentsCtrl ($scope, $routeParams, $rootScope, $location, $http, se
 					s3_project_bucket: $scope.edit.s3_project_bucket,
 					s3_project_key: $scope.edit.s3_project_key,
 					s3_project_bundle_type: $scope.edit.s3_project_bundle_type,
-					description: $scope.edit.description
+					description: $scope.edit.description,
+
+					// advanced settings
+					device_name: $scope.edit.device_name,
+					snapshot_id: $scope.edit.snapshot_id,
+					volume_type: $scope.edit.volume_type,
+					min_size: $scope.edit.min_size,
+					max_size: $scope.edit.max_size,
+					desired_capacity: $scope.edit.desired_capacity
 				}
 
 				service.post('api/deployment/redeploy', data, function(res){

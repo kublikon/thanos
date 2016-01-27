@@ -11,7 +11,6 @@
 		db = require('../lib/database'),
 		data = fs.readFileSync('../config.json', 'utf-8');
 
-
 	// updating config.json
 
 	if(process.argv[3] != '-u'){
@@ -36,6 +35,15 @@
 		aws_bucket: process.argv[8],
 		aws_region: process.argv[9],
 		aws_s3_domain: 'https://' + process.argv[8] + '.s3.amazonaws.com',
+
+		// default preferences
+		device_name: '/dev/sda1',
+		snapshot_id: 'snap-82c0a181',
+		volume_type: 'standard',
+		min_size: 1,
+		max_size: 10,
+		desired_capacity: 1,
+
 		created_at: new Date()
 	}
 	db.setting.findOneAndUpdate({ setting_id: 1 }, update, { upsert: true, new: true }, function(err, data){

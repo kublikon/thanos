@@ -56,16 +56,6 @@ window.app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'views/settings.html',
                 controller: 'settingsCtrl'
             })
-            .state('privacy', {
-                url: '/privacy',
-                templateUrl: 'views/privacy.html',
-                controller: 'privacyCtrl'
-            })
-            .state('terms', {
-                url: '/terms',
-                templateUrl: 'views/terms.html',
-                controller: 'termsCtrl'
-            })
             .state('404', {
                 url: '/404',
                 templateUrl: 'views/404.html',
