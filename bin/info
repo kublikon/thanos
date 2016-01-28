@@ -31,6 +31,13 @@ then
 	echo "";
 
 	rm -f $bin/thanos-path;
+
+	if [ -f $bin/config.json ]
+	then
+		cp -f $bin/config.json $path
+		rm -f $bin/config.json
+	fi
+
 else 
 	echo "- local -";
 	echo "";
