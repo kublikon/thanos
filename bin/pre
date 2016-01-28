@@ -7,7 +7,7 @@ path="$lib/node_modules/thanos";
 
 echo "";
 echo "-------------------------------------------------------";
-echo " thanos: would you like to overwrite the config [y/n]? ";
+echo " thanos: would you like to preserve your config [y/n]? ";
 echo "-------------------------------------------------------";
 echo "";
 

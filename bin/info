@@ -34,6 +34,9 @@ then
 
 	if [ -f $bin/config.json ]
 	then
+		echo "- preserving config -";
+		echo "";
+		
 		cp -f $bin/config.json $path
 		rm -f $bin/config.json
 	fi
