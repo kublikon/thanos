@@ -31,16 +31,6 @@ then
 	echo "";
 
 	rm -f $bin/thanos-path;
-
-	if [ -f $bin/config.json ]
-	then
-		echo "- preserving config -";
-		echo "";
-		
-		cp -f $bin/config.json $path
-		rm -f $bin/config.json
-	fi
-
 else 
 	echo "- local -";
 	echo "";
