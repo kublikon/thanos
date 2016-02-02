@@ -63,6 +63,24 @@ function usersCtrl ($scope, $routeParams, $rootScope, $location, $http, service,
 		});
 	};
 
+	$scope.deleteUser = function(user, i){
+		storage.find('user', function(token){
+			var data = {
+				access_token: token.access_token,
+				user_id: token.id,
+				id: user._id
+			}
+
+			service.post('api/user/delete', data, function(res){
+				if(res.error){
+					$location.path('404');
+				} else {
+					$scope.users.splice(i, 1);
+				}
+			});
+		});
+	};
+
 	$scope.openUser = function(username){
 		$location.path('/' + username);
 	};

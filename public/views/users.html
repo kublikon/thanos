@@ -31,8 +31,9 @@
 					<p>{{user.email}}</p>
 				</div>
 				<div class="t-buttons">
-					<a class="btn on" ng-show="{{!user.auth.is_active}}" ng-click="activateUser(user)">Activate</a>
-					<a class="btn" ng-show="{{user.auth.is_active}}" ng-click="deactivateUser(user)">Deactivate</a>
+					<a class="btn on" ng-class="{ 'hide': user.auth.is_active }" ng-click="activateUser(user)">Activate</a>
+					<a class="btn" ng-class="{ 'hide': !user.auth.is_active }" ng-click="deactivateUser(user)">Deactivate</a>
+					<a class="btn on" ng-click="deleteUser(user, $index)">Delete</a>
 				</div>
 			</div>
 		</li>
